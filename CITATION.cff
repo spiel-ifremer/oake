@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "Ontology of the Astronomical Knowledge Ecosystem"
+message: "If you use OAKE in your work, please cite this repository."
+type: software
+
+authors:
+  - family-names: Piel
+    given-names: Steven
+    orcid: "https://orcid.org/0009-0008-1759-5254"
+
+repository-code: "https://github.com/spiel-ifremer/oake"
+
+license: "CC-BY-4.0"
+
+abstract: >
+  OAKE (Ontology of the Astronomical Knowledge Ecosystem)
+  provides a semantic foundation for describing, integrating
+  and connecting the worldwide astronomy ecosystem, including
+  professional astronomy, amateur astronomy, citizen science,
+  observing infrastructures, organisations, instruments,
+  services, knowledge resources and scientific activities.
+
+keywords:
+  - astronomy
+  - ontology
+  - semantic web
+  - knowledge graph
+  - linked data
+  - FAIR
+  - open science
+  - RDF
+  - OWL
+  - astronomy ontology
