@@ -2,23 +2,42 @@
 
 ## Purpose
 
-This document describes the modelling principles that guide the development of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
+This document defines the modelling principles that guide the development of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
 
-These principles are intended to ensure consistency, interoperability, modularity and long-term sustainability.
+These principles provide a common reference for all modelling decisions throughout the project. They aim to ensure consistency, interoperability, modularity and long-term sustainability.
 
-Whenever a modelling decision is made, these principles should take precedence over convenience or short-term implementation choices.
+Every new modelling decision should be evaluated against these principles.
 
 ---
 
-# Principle 1 — Reuse before creating
+# Overview
 
-OAKE prioritises the reuse of existing semantic artefacts.
+| Identifier | Principle |
+|------------|-----------|
+| MP1 | Reuse before creating |
+| MP2 | Keep the conceptual core intentionally small |
+| MP3 | Prefer modularity |
+| MP4 | Prefer generic semantic relations |
+| MP5 | Prefer controlled vocabularies |
+| MP6 | Separate ontologies, vocabularies and knowledge graphs |
+| MP7 | Model concepts, not applications |
+| MP8 | Prefer semantic stability |
+| MP9 | Justify every new concept |
+| MP10 | Build an ecosystem, not an ontology |
 
-Before introducing a new class, property or vocabulary, contributors should first determine whether an equivalent concept already exists.
+---
 
-Priority should be given to internationally recognised standards and widely adopted community ontologies.
+# MP1 — Reuse before creating
 
-Examples include:
+## Statement
+
+Reuse existing semantic artefacts whenever possible.
+
+## Rationale
+
+Widely adopted ontologies and standards should be preferred over creating new concepts.
+
+## Examples
 
 - PROV-O
 - SOSA / SSN
@@ -33,129 +52,138 @@ Examples include:
 
 ---
 
-# Principle 2 — Keep the conceptual core intentionally small
+# MP2 — Keep the conceptual core intentionally small
 
-The OAKE Core should remain minimal.
+## Statement
 
-Only concepts that are fundamental across the entire astronomy ecosystem belong in the core.
+The OAKE Core should remain intentionally minimal.
+
+## Rationale
+
+Only concepts that are fundamental across the astronomy ecosystem belong in the conceptual core.
 
 Domain-specific concepts should instead be introduced through specialised modules.
 
-The objective is to maximise long-term stability while allowing unlimited future extensions.
+---
+
+# MP3 — Prefer modularity
+
+## Statement
+
+Develop specialised domains as independent semantic modules.
+
+## Rationale
+
+A modular architecture simplifies maintenance, encourages reuse and allows communities to evolve independently while remaining interoperable.
 
 ---
 
-# Principle 3 — Prefer modularity
+# MP4 — Prefer generic semantic relations
 
-OAKE is designed as a modular semantic framework.
+## Statement
 
-Specialised domains should be developed independently while preserving interoperability through the shared conceptual core.
+Prefer a small number of generic semantic relations.
 
-Examples include:
+## Rationale
 
-- observations;
-- instrumentation;
-- organisations;
-- citizen science;
-- education;
-- dark-sky initiatives;
-- semantic artefacts.
+Avoid multiplying specialised ontology properties.
+
+Whenever appropriate, refine semantics through controlled vocabularies rather than creating additional OWL properties.
 
 ---
 
-# Principle 4 — Prefer generic semantic relations
+# MP5 — Prefer controlled vocabularies
 
-Relationships should remain as generic as possible.
+## Statement
 
-Rather than multiplying specialised ontology properties, OAKE favours a limited number of reusable semantic relationships.
+Represent classifications using controlled vocabularies.
 
-Additional semantics should be introduced through controlled vocabularies whenever appropriate.
+## Rationale
 
----
-
-# Principle 5 — Prefer controlled vocabularies
-
-Ontology classes should describe concepts.
-
-Controlled vocabularies should describe classifications.
-
-Whenever possible, categories, roles, statuses, types and thematic domains should be represented using SKOS Concept Schemes rather than ontology subclasses.
-
-This improves flexibility while reducing ontology complexity.
+Types, roles, statuses and thematic categories should generally be modelled as SKOS concepts rather than ontology subclasses.
 
 ---
 
-# Principle 6 — Separate ontology, vocabularies and knowledge graphs
+# MP6 — Separate ontologies, vocabularies and knowledge graphs
 
-OAKE distinguishes three complementary semantic layers.
+## Statement
 
-## Ontologies
+Maintain a clear separation between conceptual models, terminology and instances.
 
-Describe concepts and relationships.
+## Rationale
 
-## Controlled vocabularies
+Each semantic layer has a distinct purpose and lifecycle.
 
-Provide shared terminology and classifications.
-
-## Knowledge graphs
-
-Contain domain-specific instances.
-
-Each layer has a distinct purpose and lifecycle.
+- Ontologies define concepts and relationships.
+- Controlled vocabularies define terminology.
+- Knowledge graphs contain domain instances.
 
 ---
 
-# Principle 7 — Model concepts, not applications
+# MP7 — Model concepts, not applications
 
-The ontology should describe concepts that exist independently of any software application or database.
+## Statement
 
-Implementation details should never influence the conceptual model.
+The ontology describes the real world rather than software implementations.
+
+## Rationale
+
+Application-specific constraints should not influence the conceptual model.
 
 ---
 
-# Principle 8 — Prefer semantic stability
+# MP8 — Prefer semantic stability
+
+## Statement
 
 The conceptual model should evolve slowly.
 
-Vocabulary terms and knowledge graphs are expected to evolve more rapidly.
+## Rationale
 
-Long-term stability is considered a primary objective.
+Long-term stability is more valuable than short-term convenience.
+
+Vocabulary terms and knowledge graphs are expected to evolve more rapidly than the conceptual core.
 
 ---
 
-# Principle 9 — Justify every new concept
+# MP9 — Justify every new concept
 
-Every new ontology class or property should answer the following questions.
+## Statement
 
-- Is this concept really fundamental?
+Every new class or property must have a clear justification.
+
+## Evaluation questions
+
+Before introducing a new concept, ask:
+
 - Does an equivalent already exist?
-- Can it be represented using an existing ontology?
-- Could a controlled vocabulary be used instead?
+- Can an existing ontology be reused?
+- Could this be represented using a controlled vocabulary?
+- Is the concept fundamental?
 - Does it answer at least one competency question?
 
-Only concepts satisfying these criteria should become part of OAKE.
+---
+
+# MP10 — Build an ecosystem, not an ontology
+
+## Statement
+
+OAKE aims to support a semantic ecosystem rather than developing an isolated ontology.
+
+## Rationale
+
+The objective is to enable ontologies, controlled vocabularies and knowledge graphs to interoperate through a coherent conceptual framework.
 
 ---
 
-# Principle 10 — Build an ecosystem, not an ontology
+# Using these principles
 
-OAKE is not intended to replace existing semantic resources.
+The Modelling Principles are intended to guide every design decision.
 
-Its objective is to enable them to work together through a coherent conceptual framework.
+Future documentation, discussions and pull requests may therefore refer to individual principles using their identifiers.
 
-The long-term ambition of OAKE is therefore to support an open ecosystem of interoperable ontologies, controlled vocabularies and knowledge graphs for astronomy.
+Examples:
 
----
-
-# Summary
-
-OAKE follows a simple philosophy.
-
-- Reuse before creating.
-- Keep the core intentionally small.
-- Build modular extensions.
-- Prefer generic relations.
-- Prefer controlled vocabularies.
-- Separate models from data.
-- Preserve semantic stability.
-- Promote interoperability.
+- "This proposal follows MP1 and MP5."
+- "Introducing this class would conflict with MP2."
+- "The proposed property should be reconsidered according to MP4."
