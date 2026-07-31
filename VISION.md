@@ -4,63 +4,81 @@
 
 Astronomy has always been one of the most collaborative scientific disciplines. Professional observatories, space agencies, research infrastructures, universities, amateur astronomers, citizen-science initiatives, educational organisations and dark-sky programmes all contribute valuable knowledge, observations and expertise.
 
-Despite this rich ecosystem, semantic interoperability between these communities remains limited. Knowledge is distributed across numerous catalogues, databases, websites, standards, ontologies and information systems, making it difficult to discover, connect and reuse resources consistently.
+Over the past decades, the astronomy ecosystem has become increasingly rich and diverse. Alongside observations, it now includes datasets, software, publications, services, ontologies, controlled vocabularies, knowledge graphs and many other digital resources.
 
-OAKE (Ontology of the Astronomical Knowledge Ecosystem) aims to address this challenge by providing a shared semantic foundation for describing and connecting the worldwide astronomy ecosystem.
+Although numerous semantic standards already exist, they have generally been developed independently to address specific communities or use cases. As a result, describing and connecting knowledge across the astronomy ecosystem remains difficult.
 
----
-
-## Vision
-
-OAKE aims to become a modular, community-driven ontology that enables semantic interoperability across astronomy.
-
-Rather than replacing existing ontologies or standards, OAKE seeks to connect them through a common conceptual framework that facilitates interoperability, reuse and knowledge integration.
-
-The long-term vision is to support an open ecosystem where semantic artefacts can be collaboratively developed, maintained and reused by the international astronomy community.
+OAKE (Ontology of the Astronomical Knowledge Ecosystem) aims to address this challenge by providing a semantic framework that promotes the coordinated reuse of existing semantic artefacts.
 
 ---
 
-## Guiding principles
+# Vision
 
-OAKE is developed according to the following principles:
+OAKE aims to become an open, modular and community-driven semantic framework for the astronomy ecosystem.
 
-- openness;
-- scientific transparency;
-- semantic interoperability;
-- modularity;
-- reuse before reinvention;
-- FAIR principles;
-- community-driven development;
-- long-term sustainability.
+Rather than replacing existing ontologies, OAKE promotes their coordinated reuse through common modelling principles, shared semantic practices and modular extensions.
+
+Its ambition is to facilitate semantic interoperability between organisations, projects, infrastructures, instruments, observations, datasets, software, publications and other knowledge resources across professional, amateur, educational and citizen-science communities.
 
 ---
 
-## Scope
+# Guiding principles
 
-OAKE is intended to describe the astronomy ecosystem as a whole rather than a specific scientific discipline or observing technique.
+OAKE is guided by a small number of fundamental principles.
 
-The ontology is expected to progressively cover concepts related to:
+- Reuse before creating.
+- Keep the conceptual core intentionally small.
+- Prefer generic semantic relations.
+- Prefer controlled vocabularies over ontology proliferation.
+- Separate ontologies, controlled vocabularies and knowledge graphs.
+- Develop domain concepts through modular extensions.
+- Promote FAIR principles.
+- Encourage community-driven governance.
+- Ensure long-term semantic stability.
 
-- people;
-- organisations;
-- observatories;
-- infrastructures;
-- instruments;
-- telescope networks;
+---
+
+# Semantic architecture
+
+OAKE distinguishes three complementary semantic layers.
+
+## Ontologies
+
+Ontologies define conceptual models and semantic relationships.
+
+## Controlled vocabularies
+
+Controlled vocabularies define classifications, roles, types and shared terminology.
+
+Whenever appropriate, they should be represented using SKOS.
+
+## Knowledge graphs
+
+Knowledge graphs contain domain-specific instances built upon ontologies and controlled vocabularies.
+
+Together, these three layers support semantic interoperability across the astronomy ecosystem.
+
+---
+
+# Scope
+
+OAKE does not attempt to model astronomy from scratch.
+
+Instead, it provides a stable semantic foundation for integrating existing semantic artefacts and supporting specialised domain modules.
+
+Examples of future modules include:
+
 - observations;
-- scientific activities;
+- instrumentation;
+- organisations;
 - citizen science;
 - education and outreach;
 - dark-sky initiatives;
-- knowledge resources;
-- services;
-- research projects.
-
-Specialised ontologies may later extend OAKE to address specific domains while preserving semantic interoperability.
+- semantic artefacts.
 
 ---
 
-## Community
+# Community
 
 OAKE is developed as an open scientific initiative.
 
@@ -70,37 +88,39 @@ As the project matures, contributors from existing astronomy and semantic commun
 
 ---
 
-## Expected impact
+# Expected impact
 
 OAKE aims to:
 
 - improve interoperability between astronomy knowledge resources;
 - facilitate the discovery and integration of semantic artefacts;
+- encourage the reuse of existing standards;
 - support FAIR knowledge graphs;
-- encourage ontology reuse;
-- promote collaboration between professional and amateur astronomy;
-- strengthen links between astronomy and the broader Semantic Web ecosystem.
+- strengthen links between professional and amateur astronomy;
+- foster collaboration across the wider Semantic Web ecosystem.
 
 ---
 
-## Current technical direction
+# Current technical direction
 
-The project is currently exploring the establishment of a persistent namespace for OAKE within a broader community-oriented semantic ecosystem.
+OAKE currently explores the development of a lightweight conceptual core supported by existing semantic standards.
 
-The provisional namespace under consideration is:
+Rather than redefining universal concepts, OAKE seeks to build upon widely adopted ontologies and vocabularies such as PROV-O, SOSA/SSN, W3C ORG, GeoSPARQL, OWL-Time, DCAT and SKOS.
+
+The project is also exploring the establishment of a persistent namespace within a broader community-oriented semantic ecosystem.
+
+The current provisional namespace is:
 
 ```
-
 https://w3id.org/astrosemantics/oake/
-
 ```
 
-This namespace is considered provisional and is expected to be discussed with collaborators involved in the astronomy semantic community before being adopted as the permanent identifier for the ontology.
+This namespace remains provisional and will be discussed with the astronomy semantic community before any permanent adoption.
 
 ---
 
-## Long-term ambition
+# Long-term ambition
 
-Beyond the development of a single ontology, OAKE aims to contribute to an open ecosystem of interoperable semantic artefacts for astronomy.
+Beyond the development of a single ontology, OAKE aims to foster an open ecosystem of interoperable ontologies, controlled vocabularies and knowledge graphs for astronomy.
 
-Its ambition is to become a common semantic foundation that enables researchers, engineers, educators, observatories, citizen-science initiatives and software systems to describe, discover and connect astronomy knowledge in a consistent and sustainable way.
+Its long-term ambition is to provide a stable semantic foundation that enables researchers, educators, observatories, citizen-science initiatives, software systems and knowledge infrastructures to describe, discover and connect astronomy knowledge in a consistent, interoperable and sustainable way.
