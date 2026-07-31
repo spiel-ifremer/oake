@@ -51,5 +51,6 @@ Contributions, comments and discussions are welcome.
 
 ## License
 
-This work is licensed under the
-**Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+OAKE is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+SPDX identifier: `CC-BY-4.0`
