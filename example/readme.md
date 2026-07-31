@@ -8,5 +8,4 @@ Examples may include:
 - Turtle examples;
 - JSON-LD examples;
 - SPARQL queries;
-- competency question demonstrations.
-- 
+- competency question demonstrations. 
