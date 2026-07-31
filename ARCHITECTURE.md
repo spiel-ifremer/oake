@@ -16,7 +16,7 @@ The semantic relationships between ontologies, controlled vocabularies, validati
 
 **Figure 1. Overall architecture of OAKE.**
 
-![Overall architecture](docs/images/oake-overall-architecture.svg)
+![Overall architecture](docs/images/architecture/oake-overall-architecture.svg)
 
 Figure&nbsp;1 provides a high-level overview of the OAKE project.
 
