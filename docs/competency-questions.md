@@ -218,3 +218,8 @@ These initial competency questions provide a first basis for evaluating how exis
 
 Additional competency questions may be introduced as concrete organisational use cases reveal further requirements.
 
+---
+
+# Use of Competency Questions
+
+Competency questions are used to evaluate whether existing semantic resources can satisfy OAKE requirements before new semantic terms are introduced.
