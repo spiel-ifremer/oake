@@ -282,6 +282,33 @@ These initial competency questions cover both the observation and measurement of
 
 They provide a basis for evaluating existing semantic resources for environmental monitoring, astronomical observations, territorial descriptions and recognition schemes.
 
+## Astronomical ecosystem
+
+### CQ28 — Resources associated with an organisation
+
+**Question:**  
+Which astronomical resources are associated with a given organisation?
+
+### CQ29 — Organisations associated with a place
+
+**Question:**  
+Which organisations are associated with a given place?
+
+### CQ30 — Resources located at a place
+
+**Question:**  
+Which instruments, observing facilities or other astronomical resources are located at a given place?
+
+### CQ31 — Participation in a network
+
+**Question:**  
+Which organisations, instruments or facilities participate in a given astronomical network?
+
+### CQ32 — Ecosystem around an entity
+
+**Question:**  
+Which organisations, places, instruments, facilities, activities and networks are related to a given entity?
+
 ---
 
 # Use of Competency Questions
