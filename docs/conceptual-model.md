@@ -62,6 +62,7 @@ OAKE promotes the coordinated reuse of existing semantic standards.
 | Time | OWL-Time |
 | Observation | SOSA / SSN |
 | Dataset | DCAT |
+| Criterion | CCCEV |
 | Controlled vocabularies | SKOS |
 | Provenance | PROV-O |
 | Metadata | Dublin Core |
