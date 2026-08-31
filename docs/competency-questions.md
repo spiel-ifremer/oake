@@ -31,7 +31,7 @@ They should:
 **Question:**  
 Which agents participate in a given activity?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Agent, Activity
 
 ## CQ2 — Location of an activity
@@ -39,7 +39,7 @@ Agent, Activity
 **Question:**  
 Where does a given activity take place?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Activity, Place
 
 ## CQ3 — Time of an activity
@@ -47,7 +47,7 @@ Activity, Place
 **Question:**  
 When does a given activity take place?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Activity, Time
 
 ## CQ4 — Context of an activity
@@ -55,7 +55,7 @@ Activity, Time
 **Question:**  
 Which agents participate in a given activity, where does it take place, and when does it occur?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Agent, Activity, Place, Time
 
 ---
@@ -73,23 +73,23 @@ These questions will be developed progressively as OAKE modules and use cases ar
 **Question:**  
 What astronomical object or phenomenon is the target of a given observation?
 
-**Conceptual anchors:**  
-Activity
+**Relevant concepts:**
+Activity, Target
 
 ### CQ6 — Instrument used for an observation
 
 **Question:**  
 Which instrument was used to perform a given observation?
 
-**Conceptual anchors:**  
-Activity
+**Relevant concepts:**
+Activity, Instrument
 
 ### CQ7 — Observing site
 
 **Question:**  
 From which observing site was a given observation performed?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Activity, Place
 
 ### CQ8 — Agent responsible for an observation
@@ -97,7 +97,7 @@ Activity, Place
 **Question:**  
 Which agent is responsible for a given observation?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Agent, Activity
 
 ### CQ9 — Time of an observation
@@ -105,7 +105,7 @@ Agent, Activity
 **Question:**  
 When was a given observation performed?
 
-**Conceptual anchors:**  
+**Relevant concepts:** 
 Activity, Time
 
 ### CQ10 — Result of an observation
@@ -113,8 +113,8 @@ Activity, Time
 **Question:**  
 What result was produced by a given observation?
 
-**Conceptual anchors:**  
-Activity
+**Relevant concepts:**
+Activity, Result
 
 ### Observation scope
 
@@ -129,7 +129,7 @@ Additional competency questions may be introduced as concrete use cases reveal f
 **Question:**  
 What type of instrument is a given instrument?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Instrument
 
 ### CQ12 — Operator of an instrument
@@ -137,7 +137,7 @@ Instrument
 **Question:**  
 Which agent operates a given instrument?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Agent, Instrument
 
 ### CQ13 — Location of an instrument
@@ -145,7 +145,7 @@ Agent, Instrument
 **Question:**  
 Where is a given instrument located?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Instrument, Place
 
 ### CQ14 — Operational status of an instrument
@@ -153,7 +153,7 @@ Instrument, Place
 **Question:**  
 What is the operational status of a given instrument?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Instrument
 
 ### CQ15 — Capabilities of an instrument
@@ -161,7 +161,7 @@ Instrument
 **Question:**  
 What observational or measurement capabilities does a given instrument provide?
 
-**Conceptual anchors:**  
+**Relevant concepts:**
 Instrument
 
 ### Instrumentation scope
@@ -177,46 +177,110 @@ Additional competency questions may be introduced as concrete instrumentation us
 **Question:**  
 What type of organisation is a given organisation?
 
-**Conceptual anchors:**  
-Agent
+**Relevant concepts:**
+Agent, Organisation
 
 ### CQ17 — Activities of an organisation
 
 **Question:**  
 Which activities does a given organisation participate in?
 
-**Conceptual anchors:**  
-Agent, Activity
+**Relevant concepts:**
+Agent, Organisation, Activity
 
 ### CQ18 — Location of an organisation
 
 **Question:**  
 Where is a given organisation located?
 
-**Conceptual anchors:**  
-Agent, Place
+**Relevant concepts:**
+Agent, Organisation, Place
 
 ### CQ19 — Relationships between organisations
 
 **Question:**  
 How is a given organisation related to another organisation?
 
-**Conceptual anchors:**  
-Agent
+**Relevant concepts:**
+Agent, Organisation
 
 ### CQ20 — Resources operated by an organisation
 
 **Question:**  
 Which instruments or observing facilities are operated by a given organisation?
 
-**Conceptual anchors:**  
-Agent, Instrument, Place
+**Relevant concepts:**
+Agent, Organisation, Instrument, Observing Facility
 
 ### Organisations scope
 
 These initial competency questions provide a first basis for evaluating how existing semantic resources, particularly W3C ORG and PROV-O, can support the description of organisations and their relationships within OAKE.
 
 Additional competency questions may be introduced as concrete organisational use cases reveal further requirements.
+
+## Dark-sky
+
+### CQ21 — Night-sky measurement
+
+**Question:**  
+What measurement of the night sky was performed at a given place and time?
+
+**Relevant concepts:** 
+Activity, Place, Time
+
+### CQ22 — Instrument used for a night-sky measurement
+
+**Question:**  
+Which instrument was used to perform a given night-sky measurement?
+
+**Relevant concepts:**
+Activity, Instrument
+
+### CQ23 — Result of a night-sky measurement
+
+**Question:**  
+What result was produced by a given night-sky measurement?
+
+**Relevant concepts:**  
+Activity, Result
+
+### CQ24 — Dark-sky recognition of a place
+
+**Question:**  
+What dark-sky label or recognition has been awarded to a given place or territory?
+
+**Relevant concepts:**
+Place, Recognition
+
+### CQ25 — Awarding organisation
+
+**Question:**  
+Which organisation awarded a given dark-sky label or recognition?
+
+**Relevant concepts:** 
+Agent, Organisation, Recognition
+
+### CQ26 — Validity period of a recognition
+
+**Question:**  
+During which period is a given dark-sky label or recognition valid?
+
+**Relevant concepts:**
+Recognition, Time
+
+### CQ27 — Criteria for a recognition
+
+**Question:**  
+Which criteria are associated with a given dark-sky label or recognition?
+
+**Relevant concepts:**
+Recognition, Criterion
+
+### Dark-sky scope
+
+These initial competency questions cover both the observation and measurement of night-sky conditions and the recognition or labelling of places and territories.
+
+They provide a basis for evaluating existing semantic resources for environmental monitoring, astronomical observations, territorial descriptions and recognition schemes.
 
 ---
 
