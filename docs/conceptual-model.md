@@ -1,10 +1,10 @@
-# OAKE Core Conceptual Model
+# OAKE Conceptual Model
 
 ## Purpose
 
 This document describes the conceptual foundation of OAKE.
 
-Rather than introducing a new upper ontology, OAKE relies on a small number of universal concepts and promotes the coordinated reuse of existing semantic artefacts.
+Rather than introducing a new upper ontology, OAKE relies on a small number of universal anchors and promotes the coordinated reuse of existing semantic artefacts.
 
 The objective is to provide a stable conceptual foundation for semantic interoperability across the astronomy ecosystem.
 
@@ -12,7 +12,7 @@ The objective is to provide a stable conceptual foundation for semantic interope
 
 # Conceptual approach
 
-The OAKE Core is intentionally minimal.
+The OAKE conceptual model is intentionally minimal.
 
 Rather than modelling every concept of astronomy, it focuses on three fundamental questions that can describe any activity within the astronomy ecosystem.
 
@@ -21,6 +21,7 @@ Rather than modelling every concept of astronomy, it focuses on three fundamenta
 | Who? | Agent |
 | What happens? | Activity |
 | Where? | Place |
+| When? | Time |
 
 These concepts constitute the conceptual anchors of OAKE.
 
@@ -34,9 +35,11 @@ classDiagram
 class Agent
 class Activity
 class Place
+class Time
 
 Agent --> Activity : participatesIn
 Activity --> Place : occursAt
+Activity --> Time : occursAtTime
 ```
 
 The relationships shown above are conceptual only.
@@ -98,7 +101,7 @@ Contain domain-specific instances.
 
 # Modular extensions
 
-The conceptual core is expected to support specialised modules.
+The OAKE conceptual model is expected to support specialised modules.
 
 Examples include:
 
@@ -121,7 +124,7 @@ This conceptual model follows the OAKE Modelling Principles.
 In particular:
 
 - MP1 — Reuse before creating
-- MP2 — Keep the conceptual core intentionally small
+- MP2 — Keep the conceptual model intentionally small
 - MP3 — Prefer modularity
 - MP4 — Prefer generic semantic relations
 - MP5 — Prefer controlled vocabularies
