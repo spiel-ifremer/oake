@@ -107,39 +107,6 @@ Consequently, every artefact should, whenever appropriate:
 
 ---
 
-# Architectural Overview
-
-OAKE is organised around several complementary components.
-
-```mermaid
-flowchart TB
-
-    OAKE[OAKE Semantic Framework]
-
-    OAKE --> STR[Strategy]
-    OAKE --> DOC[Documentation]
-    OAKE --> SEM[Semantic Artefacts]
-    OAKE --> GOV[Governance]
-    OAKE --> COM[Community]
-
-    DOC --> ARCH[Architecture]
-    DOC --> MODEL[Conceptual Model]
-    DOC --> CQ[Competency Questions]
-    DOC --> ALIGN[Semantic Alignments]
-
-    SEM --> ONT[Ontologies]
-    SEM --> VOC[Controlled Vocabularies]
-    SEM --> SHACL[Validation Shapes]
-    SEM --> KG[Knowledge Graphs]
-    SEM --> EX[Examples]
-```
-
-Each component has its own lifecycle while remaining consistent with the overall vision of the project.
-
-The repository architecture reflects this separation.
-
----
-
 # Repository Architecture
 
 The repository is organised into two major categories of resources.
@@ -173,6 +140,8 @@ The documentation explains the project.
 The semantic artefacts implement it.
 
 Neither should duplicate the role of the other.
+
+---
 
 # Project Components
 
