@@ -1,6 +1,6 @@
 # OAKE Roadmap
 
-This roadmap tracks the progressive development of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
+This roadmap tracks the progressive development of the Ontology for the Astronomical Knowledge Ecosystem (OAKE).
 
 The project follows an incremental approach. Each milestone is intended to produce reusable semantic artefacts that benefit both the astronomy community and the broader Semantic Web ecosystem.
 

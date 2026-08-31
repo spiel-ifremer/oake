@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document describes the semantic architecture of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
+This document describes the semantic architecture of the Ontology for the Astronomical Knowledge Ecosystem (OAKE).
 
 OAKE is conceived as a semantic integration framework rather than as a single monolithic ontology.
 

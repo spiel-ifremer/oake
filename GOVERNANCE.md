@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document describes the governance model of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
+This document describes the governance model of the Ontology for the Astronomical Knowledge Ecosystem (OAKE).
 
 OAKE is developed as an open scientific project whose objective is to build a sustainable semantic foundation for describing and connecting the worldwide astronomy ecosystem.
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the modelling principles that guide the development of the Ontology of the Astronomical Knowledge Ecosystem (OAKE).
+This document defines the modelling principles that guide the development of the Ontology for the Astronomical Knowledge Ecosystem (OAKE).
 
 These principles provide a common reference for all modelling decisions throughout the project. They aim to ensure consistency, interoperability, modularity and long-term sustainability.
 

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Ontology of the Astronomical Knowledge Ecosystem"
+title: "Ontology for the Astronomical Knowledge Ecosystem"
 message: "If you use OAKE in your work, please cite this repository."
 type: software
 
@@ -13,7 +13,7 @@ repository-code: "https://github.com/spiel-ifremer/oake"
 license: "CC-BY-4.0"
 
 abstract: >
-  OAKE (Ontology of the Astronomical Knowledge Ecosystem)
+  OAKE (Ontology for the Astronomical Knowledge Ecosystem)
   provides a semantic foundation for describing, integrating
   and connecting the worldwide astronomy ecosystem, including
   professional astronomy, amateur astronomy, citizen science,

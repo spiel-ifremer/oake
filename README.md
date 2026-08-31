@@ -4,7 +4,7 @@
 
 # OAKE
 
-**Ontology of the Astronomical Knowledge Ecosystem**
+**Ontology for the Astronomical Knowledge Ecosystem**
 
 > A semantic foundation for connecting the worldwide astronomy ecosystem.
 
