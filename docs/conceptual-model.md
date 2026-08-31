@@ -85,6 +85,9 @@ For example:
 - **Organisation** — reuse `org:Organization`.
 - **Instrument** — domain concept requiring further alignment with existing semantic resources, particularly SOSA/SSN.
 - **Target** — domain concept requiring further evaluation against `sosa:FeatureOfInterest` and existing astronomy-specific semantic resources.
+- **Observing Facility** — domain concept requiring further alignment with existing semantic resources, particularly astronomy-specific resources developed within the IVOA ecosystem.
+- **Recognition** — domain concept requiring further evaluation against existing semantic resources for certification, labelling and recognition schemes.
+- **Criterion** — reuse the Core Criterion and Core Evidence Vocabulary (CCCEV), which provides a generic semantic model for criteria used for assessment or evaluation.
   
 ---
 
