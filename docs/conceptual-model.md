@@ -14,7 +14,7 @@ The objective is to provide a stable conceptual foundation for semantic interope
 
 The OAKE conceptual model is intentionally minimal.
 
-Rather than modelling every concept of astronomy, it focuses on three fundamental questions that can describe any activity within the astronomy ecosystem.
+Rather than modelling every concept of astronomy, it focuses on four fundamental questions that provide general conceptual anchors for describing activities within the astronomy ecosystem.
 
 | Fundamental question | Concept |
 |----------------------|---------|
@@ -23,7 +23,11 @@ Rather than modelling every concept of astronomy, it focuses on three fundamenta
 | Where? | Place |
 | When? | Time |
 
-These concepts constitute the conceptual anchors of OAKE.
+These conceptual anchors do not constitute an exhaustive model of the astronomical ecosystem.
+
+OAKE is intended to connect the diverse entities that constitute this ecosystem, including organisations, people, places, observing facilities, instruments, activities, networks, datasets and other astronomical resources.
+
+The conceptual anchors provide a general structuring framework, while competency questions and use cases reveal the domain concepts and relationships required to describe the ecosystem.
 
 ---
 
