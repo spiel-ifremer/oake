@@ -89,6 +89,14 @@ For example:
 - **Observing Facility** — domain concept requiring further alignment with existing semantic resources, particularly astronomy-specific resources developed within the IVOA ecosystem.
 - **Recognition** — domain concept requiring further evaluation against existing semantic resources for certification, labelling and recognition schemes.
 - **Criterion** — reuse the Core Criterion and Core Evidence Vocabulary (CCCEV), which provides a generic semantic model for criteria used for assessment or evaluation.
+
+### Implications for the OAKE ontology
+
+The analysis of competency questions does not imply that each identified concept should become an OAKE-specific class.
+
+In accordance with the reuse-first approach, OAKE should introduce new ontology terms only when existing semantic resources cannot adequately represent the required concepts or relationships.
+
+Consequently, the OAKE core ontology may remain intentionally very small, and potentially contain no domain classes where suitable external semantic resources already exist.
   
 ---
 
