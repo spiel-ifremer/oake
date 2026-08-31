@@ -71,6 +71,23 @@ This table will evolve as new semantic resources are evaluated.
 
 ---
 
+## Concepts identified through competency questions
+
+The competency questions may reveal additional domain concepts beyond the four conceptual anchors.
+
+These concepts do not automatically become OAKE-specific classes. Existing semantic resources should first be evaluated in accordance with the OAKE reuse-first approach.
+
+The conceptual anchors should therefore be distinguished from domain concepts: the former provide a general structuring framework, while the latter emerge from specific competency questions and use cases.
+
+For example:
+
+- **Result** — reuse `sosa:Result`.
+- **Organisation** — reuse `org:Organization`.
+- **Instrument** — domain concept requiring further alignment with existing semantic resources, particularly SOSA/SSN.
+- **Target** — domain concept requiring further evaluation against `sosa:FeatureOfInterest` and existing astronomy-specific semantic resources.
+  
+---
+
 # Conceptual layers
 
 OAKE distinguishes three complementary semantic layers.
