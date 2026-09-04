@@ -45,7 +45,7 @@ Vocabulary reuse decisions use the following categories:
 
 | Domain | Candidate resources | Decision |
 |---|---|---|
-| Instrument types | UAT, IVOA semantic resources, OBSI, emerging OntoPortal-Astro resources | EXTEND / OPEN |
+| Instrument types | UAT, IVOA semantic resources, OBSI, SAREF extensions, emerging OntoPortal-Astro resources | EXTEND / OPEN |
 | Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
 | Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
@@ -69,6 +69,7 @@ instruments across professional, amateur and citizen-science astronomy.
 - Unified Astronomy Thesaurus (UAT)
 - IVOA semantic resources
 - Observation Instruments (OBSI)
+- SAREF and domain extensions such as SAREF4ENVI
 - Emerging OntoPortal-Astro instrument-type resources
 
 **Assessment**
@@ -80,6 +81,14 @@ spectrometric instruments.
 OBSI primarily provides identifiers and descriptions for named
 astronomical instruments rather than a comprehensive taxonomy of
 instrument types.
+
+Domain-specific semantic resources may provide instrument-type
+terminology that is directly reusable for particular OAKE use cases.
+
+For example, SAREF4ENVI defines `s4envi:TESS` as a device kind for
+Telescope Encoder and Sky Sensor photometers and relates it to the
+broader `s4envi:Photometer` device kind. Such existing terminology
+should be reused rather than recreated within OAKE.
 
 No single current resource has yet been identified as providing a
 comprehensive and coherent controlled vocabulary covering instrument
@@ -112,6 +121,8 @@ terms with shared astronomy vocabularies.
 - Evaluate meteor and fireball detection instruments.
 - Evaluate amateur and professional spectroscopic instrumentation.
 - Monitor emerging OntoPortal-Astro work on instrument-type semantics.
+- Identify domain-specific semantic resources providing reusable
+  instrument types, including SAREF extensions.
 
 ## Observing Facility and Station Types
 
