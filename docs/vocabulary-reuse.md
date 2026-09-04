@@ -148,6 +148,15 @@ use stations or observing sites hosting instruments such as all-sky
 cameras, meteor cameras or photometers. The representation and
 classification of these resources requires further investigation.
 
+SOSA/SSN provides a suitable generic semantic model for representing
+observing stations as platforms hosting instruments or other systems.
+
+However, no dedicated IVOA controlled vocabulary has currently been
+identified for classifying astronomical station or platform types.
+Terms such as observing station, monitoring station, meteor station or
+all-sky station may therefore require alignment with other existing
+vocabularies or future extension of shared astronomical terminology.
+
 **OAKE decision**
 
 **ALIGN / OPEN**
@@ -159,6 +168,11 @@ resources.
 
 OAKE should not introduce separate facility types for professional and
 amateur astronomy.
+
+Distributed observing stations should, where appropriate, be modelled
+using `sosa:Platform` rather than through an OAKE-specific `Station`
+class. The classification of such platforms should remain vocabulary-
+driven and is currently an open vocabulary-reuse issue.
 
 **Open issues**
 
