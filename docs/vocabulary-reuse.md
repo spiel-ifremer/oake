@@ -51,7 +51,7 @@ Vocabulary reuse decisions use the following categories:
 | Activity types, techniques and purposes | SOSA/SSN, IVOA semantic resources, UAT, PPSR Core, CSO | ALIGN / OPEN |
 | Network types | W3C ORG, SOSA/SSN, PPSR Core, CSO | ALIGN / OPEN |
 | Operational status | Existing lifecycle and status vocabularies to be investigated | EXTEND / OPEN |
-| Contribution roles | To be investigated | OPEN |
+| Contribution roles | PROV-O, CRediT, PPSR Core, CSO, IVOA semantic resources | ALIGN / OPEN |
 | Recognition types | To be investigated | OPEN |
 
 
@@ -576,3 +576,80 @@ operational states.
   citizen-science networks and amateur astronomical infrastructures.
 - Determine whether an extension of an existing shared vocabulary is
   sufficient before considering OAKE-specific terminology.
+
+## Contribution Roles
+
+**Requirement**
+
+Provide shared controlled terminology for describing the roles played
+by people and organisations in astronomical activities, projects,
+observations and other contributions to the astronomical ecosystem.
+
+**Candidate resources**
+
+- PROV-O
+- CRediT (Contributor Roles Taxonomy)
+- PPSR Core
+- Citizen Science Ontology (CSO)
+- IVOA semantic resources
+- Other domain-specific role vocabularies where relevant
+
+**Assessment**
+
+Contribution roles should be distinguished from agent types.
+
+A person or organisation may play different roles depending on the
+activity or context in which it participates. PROV-O provides a generic
+semantic mechanism for representing such contextual roles through
+`prov:Role`, `prov:hadRole` and qualified associations.
+
+CRediT provides established controlled terminology for research
+contributions such as investigation, methodology, data curation,
+software, validation and project administration. It is therefore
+relevant to part of the OAKE contribution landscape but does not cover
+all astronomical participation roles.
+
+PPSR Core and related citizen-science semantic resources provide
+complementary terminology and structures for participation in
+citizen-science projects.
+
+IVOA resources provide some roles associated with astronomical
+resources and data curation, including creator, contributor, publisher
+and contact, but do not constitute a comprehensive vocabulary of
+astronomical participation roles.
+
+Astronomy-specific roles such as observer, instrument operator,
+station maintainer or observatory operator require further
+investigation.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should use PROV-O as the generic semantic mechanism for
+representing contextual roles.
+
+Existing controlled role vocabularies should be reused according to
+their scope. CRediT should be reused for research-contribution roles
+where applicable, while PPSR Core and related resources should be
+considered for participatory-science roles.
+
+OAKE should not introduce ontology classes for individual contributor
+roles.
+
+Astronomy-specific role terminology should only be introduced or
+extended where existing shared vocabularies do not adequately cover
+identified requirements.
+
+**Open issues**
+
+- Evaluate terminology for observer and observation-related roles.
+- Evaluate terminology for instrument and station operators.
+- Evaluate roles associated with observatory and facility operation.
+- Evaluate volunteer and citizen-science participation roles.
+- Establish mappings between overlapping CRediT, PPSR Core and
+  astronomy-specific roles where appropriate.
+- Distinguish contribution roles from organisational roles and
+  responsibilities.
+- Determine whether astronomy-specific extensions to existing role
+  vocabularies are required.
