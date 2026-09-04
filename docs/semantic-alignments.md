@@ -59,7 +59,7 @@ Semantic alignment decisions use the following categories:
 | Target | SOSA/SSN, astronomy-specific semantic resources | ALIGN |
 | Network | W3C ORG, SOSA/SSN, PPSR Core, CSO, PROV-O | ALIGN |
 | Citizen Science / Public Participation | PPSR Core, CSO, SOSA/SSN, PROV-O | ALIGN |
-| Recognition | CCCEV, PROV-O, W3C ORG | OPEN |
+| Recognition | Schema.org, CCCEV, PROV-O, W3C ORG | ALIGN / OPEN |
 
 
 ## Instrument
@@ -347,38 +347,70 @@ schemes relevant to the astronomical ecosystem.
 
 **Candidate semantic resources**
 
+- Schema.org
 - CCCEV
 - PROV-O
 - W3C ORG
-- Domain-specific certification and recognition vocabularies to be
-  further investigated
+- OWL-Time
+- Domain-specific certification and recognition vocabularies where relevant
 
 **Assessment**
 
-CCCEV provides a generic semantic framework for requirements, criteria
-and evidence used in assessment processes.
+Schema.org provides a generic `Certification` model for official
+statements about subjects such as persons, organisations and places.
+It includes properties for representing the issuing organisation,
+validity, expiration, certification status and certification
+identification.
 
-However, CCCEV does not by itself provide a generic model for the
-recognition, certification or label resulting from such an assessment.
+This provides a potentially suitable generic model for certification
+schemes relevant to OAKE, including certifications awarded to
+astronomical places or organisations.
 
-PROV-O and W3C ORG may contribute provenance and organisational
-information, but no existing resource has yet been identified as a
-sufficient generic representation of Recognition for OAKE.
+CCCEV provides complementary semantics for representing the
+requirements, criteria and evidence involved in assessment processes.
+It should therefore be considered alongside certification models rather
+than as a representation of the resulting recognition itself.
+
+PROV-O may provide additional provenance information about recognition
+and assessment processes, while W3C ORG can represent organisations
+involved in issuing or receiving recognitions. Temporal aspects can be
+represented using existing temporal vocabularies such as OWL-Time where
+more detailed temporal modelling is required.
+
+However, not every form of recognition is necessarily a certification.
+Labels, awards, designations, accreditations and other distinctions may
+require different semantic representations.
+
+No single semantic resource has yet been identified as sufficient for
+representing all forms of recognition relevant to the astronomical
+ecosystem.
 
 **OAKE decision**
 
-**OPEN**
+**ALIGN / OPEN**
+
+OAKE should reuse existing generic semantic models for recognition and
+certification where their semantics match the relevant use case.
+
+Schema.org `Certification` should be evaluated as the preferred generic
+model for certification schemes, while CCCEV should be reused for
+criteria, requirements and evidence where applicable.
+
+PROV-O, W3C ORG and OWL-Time should be reused where provenance,
+organisational or temporal information is required.
 
 No OAKE-specific `Recognition` class is introduced at this stage.
 
 **Open issues**
 
-- Identify existing semantic models for certifications, labels, awards
-  and recognition schemes.
-- Determine how a recognition is related to the organisation awarding it.
-- Determine how the recognised entity is represented.
-- Reuse CCCEV for criteria and evidence wherever applicable.
-- Represent validity periods using existing temporal vocabularies.
+- Evaluate Schema.org `Certification` against representative dark-sky
+  recognition schemes.
+- Distinguish certification, label, award, designation and accreditation.
+- Determine how recognition schemes themselves should be represented.
+- Define the relationship between a recognition and the CCCEV criteria
+  and evidence used for its assessment.
+- Determine how non-certification forms of recognition should be
+  represented.
 - Identify controlled vocabularies for recognition and certification
   types.
 
