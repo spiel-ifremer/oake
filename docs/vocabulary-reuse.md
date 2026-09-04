@@ -44,7 +44,7 @@ Vocabulary reuse decisions use the following categories:
 | Domain | Candidate resources | Decision |
 |---|---|---|
 | Instrument types | UAT, IVOA semantic resources, OBSI, emerging OntoPortal-Astro resources | EXTEND / OPEN |
-| Observing facility types | OBSF, IVOA semantic resources | OPEN |
+| Observing facility types | OBSF, IVOA semantic resources, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA / SIMBAD semantic resources, UAT | OPEN |
 | Spectral domains / wavebands | IVOA vocabularies | OPEN |
 | Organisation types | To be investigated | OPEN |
@@ -110,3 +110,64 @@ terms with shared astronomy vocabularies.
 - Evaluate meteor and fireball detection instruments.
 - Evaluate amateur and professional spectroscopic instrumentation.
 - Monitor emerging OntoPortal-Astro work on instrument-type semantics.
+
+## Observing Facility Types
+
+**Requirement**
+
+Provide shared terminology for classifying astronomical observing
+facilities across professional, amateur and citizen-science astronomy.
+
+**Candidate resources**
+
+- IVOA Observation Facilities (OBSF)
+- IVOA semantic resources
+- Wikidata
+- Relevant domain-specific facility classifications
+
+**Assessment**
+
+The IVOA Observation Facilities work provides a shared nomenclature for
+identifying astronomical observation facilities and resolving their
+names and aliases.
+
+Its semantic scope includes observatories, telescopes, spacecraft,
+space probes, space missions and other facilities supporting
+observational activities.
+
+Existing IVOA work also provides candidate facility categories such as
+Observatory, Spacecraft, Space Mission and Telescope.
+
+These categories are largely independent of whether a facility is
+operated by a professional institution, an amateur organisation or an
+individual observer.
+
+However, distributed observing infrastructures introduce additional
+requirements. Citizen-science and amateur observing networks frequently
+use stations or observing sites hosting instruments such as all-sky
+cameras, meteor cameras or photometers. The representation and
+classification of these resources requires further investigation.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should reuse the IVOA Observation Facilities nomenclature for
+identifying facilities wherever applicable and align facility
+classification with existing astronomical and generic semantic
+resources.
+
+OAKE should not introduce separate facility types for professional and
+amateur astronomy.
+
+**Open issues**
+
+- Determine the distinction between an observing facility, observatory,
+  station and observing site.
+- Evaluate how distributed observing stations should be classified.
+- Evaluate TESS, AllSky and FRIPON stations as representative use cases.
+- Determine the relationship between facility types and `sosa:Platform`.
+- Evaluate the facility-type classifications available through OBSF,
+  IVOA resources and Wikidata.
+- Determine whether additional terminology is required for
+  community-operated and citizen-operated observing facilities.
