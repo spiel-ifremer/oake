@@ -54,7 +54,7 @@ Semantic alignment decisions use the following categories:
 | Organisation | W3C ORG | REUSE |
 | Result | SOSA/SSN | REUSE |
 | Criterion | CCCEV | REUSE |
-| Instrument | SOSA/SSN, IVOA OBSI | ALIGN |
+| Instrument | SOSA/SSN, SAREF and extensions, IVOA OBSI | ALIGN |
 | Observing Facility | SOSA/SSN, IVOA OBSF | ALIGN |
 | Target | SOSA/SSN, astronomy-specific semantic resources | ALIGN |
 | Network | W3C ORG, SOSA/SSN, PPSR Core, CSO, PROV-O | ALIGN |
@@ -72,20 +72,55 @@ astronomy using a shared semantic framework.
 **Candidate semantic resources**
 
 - SOSA/SSN
+- SAREF and relevant SAREF extensions
 - IVOA Observation Instruments (OBSI)
+- Astronomy-specific controlled vocabularies
+
+**Modelling considerations**
+
+The representation of an instrument should distinguish several
+complementary dimensions:
+
+- the individual physical instrument;
+- its instrument type or kind;
+- its product model and manufacturer;
+- its capabilities or functions;
+- its components and relationships with other equipment;
+- and its role within a particular observational or operational context.
+
+These dimensions should not be conflated. In particular, an instrument
+type should be represented independently from its manufacturer or
+commercial product model.
+
+The same instrument type should be usable across professional, amateur
+and citizen-science contexts. Differences in ownership, operation,
+deployment, scale or use should be represented through relationships
+and contextual information rather than through separate instrument
+taxonomies.
 
 **Assessment**
 
 SOSA/SSN provides generic concepts for systems participating in
-observations and related activities.
+observations and related activities. It provides an appropriate
+functional model for representing instruments when they act as systems
+or sensors within observational processes.
+
+SAREF and its domain extensions provide complementary semantics for
+devices, device kinds, capabilities and related properties. For example,
+SAREF4ENVI provides astronomy-relevant device kinds such as TESS
+photometers. Such existing terminology should be reused where
+applicable rather than recreated within OAKE.
 
 OBSI provides astronomy-specific terminology and identifiers for
-observation instruments. Its applicability to amateur astronomical
-instrumentation requires further evaluation.
+observation instruments. Its applicability beyond professional
+astronomical facilities and its relationship with SOSA/SSN and SAREF
+require further evaluation.
 
-The two resources should be considered complementary: SOSA/SSN can
-provide the generic observational and system model, while OBSI can
-provide astronomy-specific terminology and identifiers.
+These resources should therefore be considered complementary rather
+than alternative models. SOSA/SSN can provide observational and system
+semantics, SAREF can contribute device and capability semantics, while
+OBSI and other astronomy-specific resources can provide domain
+terminology and identifiers.
 
 **OAKE decision**
 
@@ -95,11 +130,17 @@ No OAKE-specific `Instrument` class is introduced at this stage.
 
 **Open issues**
 
-- Determine the appropriate alignment between OBSI instruments and
-  SOSA/SSN systems.
+- Determine appropriate mappings between SOSA/SSN, SAREF and
+  astronomy-specific instrument resources such as OBSI.
+- Distinguish consistently between individual instruments, instrument
+  types or kinds, product models and manufacturers.
+- Determine how instrument capabilities, components and relationships
+  with other equipment should be represented.
 - Evaluate OBSI coverage beyond professional astronomical facilities.
 - Identify controlled vocabularies suitable for instrument types across
-  professional and amateur astronomy.
+  professional, amateur and citizen-science astronomy.
+- Identify domain-specific semantic resources providing reusable
+  instrument types or device kinds, including relevant SAREF extensions.
 
 
 ## Observing Facility
@@ -450,8 +491,8 @@ semantic resources identified by OAKE.
 
 Current priorities are:
 
-1. Define mappings between SOSA/SSN and astronomy-specific resources
-   for instruments and observing facilities.
+1. Define mappings between SOSA/SSN, SAREF and astronomy-specific
+   resources for instruments and observing facilities.
 2. Investigate PPSR Core / CSO ↔ SOSA/SSN mappings for participatory
    astronomical observations.
 3. Clarify relationships between organisations, facilities, instruments,
