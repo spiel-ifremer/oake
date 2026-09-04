@@ -59,7 +59,7 @@ Semantic alignment decisions use the following categories:
 | Target | SOSA/SSN, astronomy-specific semantic resources | ALIGN |
 | Network | W3C ORG, SOSA/SSN, PPSR Core, CSO, PROV-O | ALIGN |
 | Citizen Science / Public Participation | PPSR Core, CSO, SOSA/SSN, PROV-O | ALIGN |
-| Recognition | Schema.org, CCCEV, PROV-O, W3C ORG | ALIGN / OPEN |
+| Recognition | Schema.org, CCCEV, PROV-O, W3C ORG, OWL-Time | ALIGN / OPEN |
 
 
 ## Instrument
