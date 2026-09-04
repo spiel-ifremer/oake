@@ -47,7 +47,7 @@ Vocabulary reuse decisions use the following categories:
 | Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
 | Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
-| Organisation types | To be investigated | OPEN |
+| Organisation types | W3C ORG, SKOS, external organisation classifications | ALIGN / OPEN |
 | Activity types | To be investigated | OPEN |
 | Network types | To be investigated | OPEN |
 | Operational status | To be investigated | OPEN |
@@ -304,3 +304,68 @@ wavebands.
   mappings.
 - Evaluate PhotDM when photometric filters and bandpasses become part
   of OAKE use cases.
+
+## Organisation Types
+
+**Requirement**
+
+Provide shared terminology for classifying organisations participating
+in the astronomical ecosystem, including astronomical associations,
+clubs, scientific societies, universities, research institutes and
+other organisations.
+
+**Candidate resources**
+
+- W3C Organization Ontology (ORG)
+- SKOS
+- Existing general-purpose organisation classifications
+- Domain-specific classifications where relevant
+
+**Assessment**
+
+W3C ORG provides a suitable generic semantic model for organisations
+and supports their classification through `org:classification`, whose
+values can be represented using SKOS concepts.
+
+However, no comprehensive astronomy-specific controlled vocabulary has
+been identified for classifying the different kinds of organisations
+participating in the astronomical ecosystem.
+
+Organisation type should also be distinguished from other dimensions
+such as organisational role, activity, scientific domain and legal
+status. For example, an observatory operator is primarily a role played
+by an organisation rather than necessarily a distinct type of
+organisation.
+
+Professional and amateur astronomy should not be represented through
+separate fundamental organisation classes. Shared organisation types
+should be used wherever the organisational nature is equivalent.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should reuse `org:Organization` and the classification mechanisms
+provided by W3C ORG.
+
+Organisation classifications should use controlled terminology wherever
+suitable vocabularies exist.
+
+OAKE should not introduce an ontology hierarchy of astronomy-specific
+organisation classes at this stage.
+
+No OAKE-specific organisation-type vocabulary should be introduced
+until the requirements and existing classifications have been evaluated
+more systematically.
+
+**Open issues**
+
+- Identify existing controlled vocabularies for general organisation
+  types.
+- Evaluate terminology for astronomical clubs, associations and
+  scientific societies.
+- Evaluate terminology for universities, research institutes and
+  observatory organisations.
+- Distinguish organisation type from role, activity and legal status.
+- Determine whether astronomy-specific organisation terminology is
+  actually required.
