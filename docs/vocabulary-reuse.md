@@ -46,7 +46,7 @@ Vocabulary reuse decisions use the following categories:
 | Instrument types | UAT, IVOA semantic resources, OBSI, emerging OntoPortal-Astro resources | EXTEND / OPEN |
 | Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
-| Spectral domains / wavebands | IVOA vocabularies | OPEN |
+| Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
 | Organisation types | To be investigated | OPEN |
 | Activity types | To be investigated | OPEN |
 | Network types | To be investigated | OPEN |
@@ -246,3 +246,61 @@ monitored.
   classification in OAKE examples and mappings.
 - Evaluate requirements for targets that are not conventional
   astronomical objects.
+
+## Spectral Domains and Wavebands
+
+**Requirement**
+
+Provide shared terminology for describing the spectral domains or
+messengers associated with astronomical instruments, observations,
+datasets and other resources.
+
+**Candidate resources**
+
+- IVOA Messenger vocabulary
+- IVOA UCD1+
+- IVOA Photometry Data Model (PhotDM)
+
+**Assessment**
+
+The IVOA provides established semantic resources for representing
+spectral domains and related concepts.
+
+The IVOA Messenger vocabulary provides controlled terminology for the
+general classification of the messenger or spectral domain relevant to
+an astronomical resource. It extends the traditional concept of
+waveband beyond electromagnetic radiation and therefore supports a
+broader multi-messenger astronomy context.
+
+UCD1+ provides complementary terminology for describing quantities
+related to the electromagnetic spectrum and should be used where more
+specific semantic descriptions of measured quantities are required.
+
+PhotDM provides additional semantics for photometric filters and
+bandpasses where detailed photometric information is required.
+
+These resources address different levels of description and should be
+used complementarily rather than replaced by an OAKE-specific
+vocabulary.
+
+**OAKE decision**
+
+**REUSE**
+
+OAKE should reuse the IVOA Messenger vocabulary for general spectral
+domain or messenger classification.
+
+UCD1+ and relevant IVOA data models should be reused when more detailed
+spectral or photometric descriptions are required.
+
+OAKE should not introduce a separate vocabulary for spectral domains or
+wavebands.
+
+**Open issues**
+
+- Define usage patterns distinguishing general messenger classification
+  from quantitative spectral coverage.
+- Determine when UCD1+ terminology is required in OAKE datasets and
+  mappings.
+- Evaluate PhotDM when photometric filters and bandpasses become part
+  of OAKE use cases.
