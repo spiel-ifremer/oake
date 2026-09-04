@@ -444,16 +444,21 @@ controlled vocabularies rather than through parallel semantic models.
 
 ## Next investigations
 
-Priority should be given to unresolved alignments that affect several
-competency questions and to controlled vocabularies capable of providing
-a shared terminology across professional and amateur astronomy.
+Priority should be given to unresolved semantic alignments that affect
+several competency questions and to mappings between the complementary
+semantic resources identified by OAKE.
 
 Current priorities are:
 
-1. Instrument type vocabularies
-2. Observing facility type vocabularies
-3. PPSR Core / CSO ↔ SOSA/SSN mappings
-4. Astronomy-specific target vocabularies
-5. Relationships between organisations, facilities, instruments and
-   networks
-6. Recognition and certification models
+1. Define mappings between SOSA/SSN and astronomy-specific resources
+   for instruments and observing facilities.
+2. Investigate PPSR Core / CSO ↔ SOSA/SSN mappings for participatory
+   astronomical observations.
+3. Clarify relationships between organisations, facilities, instruments,
+   platforms, deployments and networks.
+4. Evaluate representative professional, amateur and citizen-science
+   use cases against the proposed alignments.
+5. Evaluate Schema.org `Certification` and CCCEV against representative
+   recognition schemes.
+6. Identify semantic gaps that remain after reuse and alignment of
+   existing resources.
