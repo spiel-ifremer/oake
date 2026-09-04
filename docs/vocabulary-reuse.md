@@ -45,7 +45,7 @@ Vocabulary reuse decisions use the following categories:
 |---|---|---|
 | Instrument types | UAT, IVOA semantic resources, OBSI, emerging OntoPortal-Astro resources | EXTEND / OPEN |
 | Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
-| Astronomical object types | IVOA / SIMBAD semantic resources, UAT | OPEN |
+| Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
 | Spectral domains / wavebands | IVOA vocabularies | OPEN |
 | Organisation types | To be investigated | OPEN |
 | Activity types | To be investigated | OPEN |
@@ -189,3 +189,60 @@ driven and is currently an open vocabulary-reuse issue.
   IVOA resources and Wikidata.
 - Determine whether additional shared terminology is required for
   community-operated and citizen-operated observing facilities.
+## Astronomical Object Types
+
+**Requirement**
+
+Provide shared controlled terminology for classifying the astronomical
+nature of targets involved in observations and other astronomical
+activities.
+
+**Candidate resources**
+
+- IVOA Object Types
+- SIMBAD object-type classification
+- Unified Astronomy Thesaurus (UAT)
+
+**Assessment**
+
+The IVOA Object Types vocabulary is specifically designed to represent
+types of astronomical objects, ranging from stars to galaxies.
+
+It is based closely on the object-type classification used by SIMBAD
+and is intended for use in astronomical data models, including the
+classification of observation targets.
+
+This vocabulary should be distinguished from the identification of a
+specific astronomical target. For example, M31 is an astronomical
+object that may be represented as a feature of interest in an
+observation, while Galaxy represents its astronomical object type.
+
+UAT provides complementary scientific terminology and may support
+cross-references or mappings, but the IVOA Object Types vocabulary is
+more directly aligned with the requirement for target classification.
+
+The IVOA Object Types vocabulary is currently published as a draft and
+has not yet reached approved IVOA vocabulary status.
+
+**OAKE decision**
+
+**REUSE / MONITOR**
+
+OAKE should reuse IVOA Object Types as the preferred controlled
+vocabulary for classifying the astronomical nature of observation
+targets wherever applicable.
+
+OAKE should not introduce a separate vocabulary of astronomical object
+types.
+
+The evolution and normative status of the IVOA vocabulary should be
+monitored.
+
+**Open issues**
+
+- Monitor the evolution and approval status of IVOA Object Types.
+- Evaluate mappings between IVOA Object Types and UAT where useful.
+- Distinguish consistently between target identity and target
+  classification in OAKE examples and mappings.
+- Evaluate requirements for targets that are not conventional
+  astronomical objects.
