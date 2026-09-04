@@ -22,6 +22,12 @@ Its ambition is to facilitate semantic interoperability between organisations, p
 
 OAKE considers professional and amateur astronomy as parts of a single, interconnected astronomical ecosystem. Rather than modelling them as separate domains, it seeks to provide a common semantic framework through which their organisations, infrastructures, instruments, activities, data and knowledge resources can be described and connected.
 
+OAKE is not limited to astronomical observations, instruments or data. Its scope is the broader astronomical knowledge ecosystem, including people, organisations, communities, activities, places, facilities, equipment, observations, data, knowledge resources and the networks and relationships that connect them.
+
+The primary added value of OAKE lies in making these heterogeneous parts of the astronomical ecosystem semantically interoperable. Rather than replacing existing domain models, OAKE seeks to connect and reuse them within a coherent framework.
+
+Spatial and temporal dimensions are transversal to this ecosystem. OAKE should support not only the description of where astronomical entities and activities are located, but also how they and their relationships evolve over time.
+
 ---
 
 # Guiding principles
