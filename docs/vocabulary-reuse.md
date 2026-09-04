@@ -49,7 +49,7 @@ Vocabulary reuse decisions use the following categories:
 | Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
 | Organisation types | W3C ORG, SKOS, external organisation classifications | ALIGN / OPEN |
 | Activity types, techniques and purposes | SOSA/SSN, IVOA semantic resources, UAT, PPSR Core, CSO | ALIGN / OPEN |
-| Network types | To be investigated | OPEN |
+| Network types | W3C ORG, SOSA/SSN, PPSR Core, CSO | ALIGN / OPEN |
 | Operational status | To be investigated | OPEN |
 | Contribution roles | To be investigated | OPEN |
 | Recognition types | To be investigated | OPEN |
@@ -442,3 +442,73 @@ OAKE-specific terminology is considered.
 - Evaluate PPSR Core and CSO terminology for participatory activities.
 - Determine which activity dimensions should be represented through
   controlled vocabularies.
+
+## Network Types
+
+**Requirement**
+
+Provide shared terminology for describing and classifying networks,
+collaborations and coordinated initiatives across the astronomical
+ecosystem.
+
+**Candidate resources**
+
+- W3C Organization Ontology (ORG)
+- SOSA/SSN
+- PPSR Core
+- Citizen Science Ontology (CSO)
+- Astronomy-specific semantic resources where relevant
+
+**Assessment**
+
+The concept of a network in the astronomical ecosystem covers several
+distinct but potentially overlapping dimensions.
+
+Organisational networks and collaborations may be represented using
+W3C ORG, particularly where multiple organisations participate in a
+coordinated structure.
+
+Observational and instrumental networks can be represented using
+SOSA/SSN concepts such as `sosa:System`, `sosa:Platform` and
+`sosa:Deployment`. SOSA/SSN explicitly supports deployments involving
+networks of sensors or other observational systems.
+
+Participatory scientific initiatives may additionally be described
+using PPSR Core and related citizen-science semantic resources. PPSR
+Core distinguishes projects from higher-level programmes or campaigns,
+providing a complementary representation for coordinated scientific
+initiatives.
+
+These dimensions may overlap. A single astronomical initiative may
+simultaneously constitute an organisational collaboration, a
+distributed observational infrastructure and a participatory research
+programme.
+
+No comprehensive astronomy-specific controlled vocabulary has been
+identified for classifying network types.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should represent networks through existing semantic resources
+according to the nature of the network rather than introducing a single
+generic OAKE network model.
+
+OAKE should not introduce an `oake:Network` class at this stage.
+
+A dedicated taxonomy of astronomical network types should not be
+introduced unless competency questions and use cases demonstrate that
+network classification cannot be derived adequately from existing
+semantic structures, participation models and purposes.
+
+**Open issues**
+
+- Clarify the distinction between organisational networks,
+  observational networks and scientific programmes or initiatives.
+- Evaluate representative networks such as TESS and FRIPON.
+- Determine when explicit network-type classification is required.
+- Evaluate terminology for distributed observational infrastructures.
+- Evaluate PPSR Core and CSO for participatory network structures.
+- Investigate astronomy-specific terminology only where existing
+  generic resources prove insufficient.
