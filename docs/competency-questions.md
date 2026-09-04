@@ -309,6 +309,24 @@ Which organisations, instruments or facilities participate in a given astronomic
 **Question:**  
 Which organisations, places, instruments, facilities, activities and networks are related to a given entity?
 
+### CQ33 — Astronomical ecosystem within a territory
+
+**Question:** Which organisations, places, facilities, instruments,
+networks, educational resources and other astronomical entities are
+associated with a given geographical area?
+
+### CQ34 — Astronomical ecosystem at a given time
+
+**Question:** Which organisations, places, facilities, instruments,
+networks, activities and other astronomical entities existed or were
+active at a given time or during a given period?
+
+### CQ35 — Astronomical ecosystem in space and time
+
+**Question:** Which astronomical entities and relationships were
+associated with a given geographical area at a given time or during
+a given period?
+
 ---
 
 # Use of Competency Questions
