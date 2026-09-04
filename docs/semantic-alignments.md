@@ -54,12 +54,120 @@ Semantic alignment decisions use the following categories:
 | Organisation | W3C ORG | REUSE |
 | Result | SOSA/SSN | REUSE |
 | Criterion | CCCEV | REUSE |
+| Physical Resource / Equipment | SAREF, SAREF4SYST, Schema.org, SOSA/SSN, PROV-O, SKOS, CCO | ALIGN / OPEN |
 | Instrument | SOSA/SSN, SAREF and extensions, IVOA OBSI | ALIGN |
 | Observing Facility | SOSA/SSN, IVOA OBSF | ALIGN |
 | Target | SOSA/SSN, astronomy-specific semantic resources | ALIGN |
 | Network | W3C ORG, SOSA/SSN, PPSR Core, CSO, PROV-O | ALIGN |
 | Citizen Science / Public Participation | PPSR Core, CSO, SOSA/SSN, PROV-O | ALIGN |
 | Recognition | Schema.org, CCCEV, PROV-O, W3C ORG, OWL-Time | ALIGN / OPEN |
+
+
+## Physical Resource / Equipment
+
+**Requirement**
+
+Represent physical resources and equipment that are relevant to the
+astronomical ecosystem, including resources that are not necessarily
+observation instruments.
+
+Examples include mounts, tripods, mirrors, optical filters, cameras,
+computers, projectors, educational models and other physical artefacts
+used in astronomical, educational, outreach or operational activities.
+
+**Candidate semantic resources**
+
+- SAREF
+- SAREF4SYST
+- Schema.org
+- SOSA/SSN
+- PROV-O
+- SKOS
+- Common Core Ontologies (CCO)
+
+**Modelling considerations**
+
+The representation of a physical resource should distinguish several
+complementary dimensions:
+
+- the individual physical object;
+- its type or kind;
+- its product model and manufacturer;
+- its capabilities or functions;
+- its components and part-whole relationships;
+- its location;
+- and its role within a particular activity or operational context.
+
+These dimensions should not be conflated. In particular, the type of a
+resource should be represented independently from its manufacturer or
+commercial product model.
+
+The same type of equipment should be usable across professional, amateur,
+educational and citizen-science contexts. Differences in ownership,
+deployment, operation or use should be represented through relationships
+and contextual information rather than through separate equipment
+taxonomies.
+
+**Assessment**
+
+SAREF provides generic semantics for devices, device kinds, functions,
+properties and composition. Its distinction between individual devices
+and device kinds is particularly relevant to the representation of
+astronomical equipment.
+
+SAREF4SYST provides complementary semantics for systems, subsystems and
+connections where equipment forms part of a functional system.
+
+Schema.org provides useful semantics for commercial and manufactured
+resources, including product models and manufacturers. These semantics
+may complement SAREF where product identity and organisational
+relationships need to be represented explicitly.
+
+SOSA/SSN should be used when a physical resource performs a role within
+an observational system, for example as a sensor, system or platform.
+Physical resources should not, however, be classified as SOSA systems
+solely because they are part of astronomical equipment.
+
+PROV-O can provide generic entity and provenance semantics, while SKOS
+can support controlled terminology for equipment and resource types.
+
+The Common Core Ontologies provide potentially relevant semantics for
+artefacts, functions and physical resources. Their applicability to OAKE
+should continue to be monitored before considering them as a normative
+dependency.
+
+These resources should therefore be considered complementary rather than
+alternative models.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should investigate the combined reuse of generic resources for
+representing physical equipment before introducing any OAKE-specific
+physical-resource model.
+
+No OAKE-specific `PhysicalResource` or `Equipment` class is introduced
+at this stage.
+
+**Open issues**
+
+- Determine appropriate mappings between SAREF, Schema.org, SOSA/SSN
+  and other generic models for physical resources.
+- Determine how individual resources, resource types, product models and
+  manufacturers should be represented consistently.
+- Determine appropriate semantics for components and part-whole
+  relationships.
+- Determine how equipment capabilities and functions should be
+  represented.
+- Clarify when a physical resource should additionally be represented as
+  a SOSA/SSN system, sensor or platform.
+- Identify controlled vocabularies suitable for general astronomical
+  equipment and resource types.
+- Monitor the evolution and applicability of the Common Core Ontologies.
+
+
+## Instrument
 
 
 ## Instrument
