@@ -44,7 +44,7 @@ Vocabulary reuse decisions use the following categories:
 | Domain | Candidate resources | Decision |
 |---|---|---|
 | Instrument types | UAT, IVOA semantic resources, OBSI, emerging OntoPortal-Astro resources | EXTEND / OPEN |
-| Observing facility types | OBSF, IVOA semantic resources, Wikidata | ALIGN / OPEN |
+| Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA / SIMBAD semantic resources, UAT | OPEN |
 | Spectral domains / wavebands | IVOA vocabularies | OPEN |
 | Organisation types | To be investigated | OPEN |
@@ -162,12 +162,16 @@ amateur astronomy.
 
 **Open issues**
 
-- Determine the distinction between an observing facility, observatory,
-  station and observing site.
-- Evaluate how distributed observing stations should be classified.
+- Determine the distinction between an observing facility, observatory
+  and observing site.
+- Treat distributed observing stations as candidate specialisations or
+  classifications of `sosa:Platform` rather than introducing an
+  OAKE-specific `Station` class.
+- Evaluate existing controlled terminology for station and platform
+  types, including observing stations, monitoring stations and
+  instrument stations.
 - Evaluate TESS, AllSky and FRIPON stations as representative use cases.
-- Determine the relationship between facility types and `sosa:Platform`.
 - Evaluate the facility-type classifications available through OBSF,
   IVOA resources and Wikidata.
-- Determine whether additional terminology is required for
+- Determine whether additional shared terminology is required for
   community-operated and citizen-operated observing facilities.
