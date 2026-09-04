@@ -52,7 +52,7 @@ Vocabulary reuse decisions use the following categories:
 | Network types | W3C ORG, SOSA/SSN, PPSR Core, CSO | ALIGN / OPEN |
 | Operational status | Existing lifecycle and status vocabularies to be investigated | EXTEND / OPEN |
 | Contribution roles | PROV-O, CRediT, PPSR Core, CSO, IVOA semantic resources | ALIGN / OPEN |
-| Recognition types | To be investigated | OPEN |
+| Recognition types | Schema.org, CCCEV, PROV-O, external recognition and certification vocabularies | ALIGN / OPEN |
 
 
 ## Instrument Types
@@ -653,3 +653,74 @@ identified requirements.
   responsibilities.
 - Determine whether astronomy-specific extensions to existing role
   vocabularies are required.
+
+## Recognition Types
+
+**Requirement**
+
+Provide shared terminology for describing different forms of
+recognition relevant to the astronomical ecosystem, including
+certifications, labels, awards, designations and similar distinctions.
+
+**Candidate resources**
+
+- Schema.org
+- Core Criterion and Core Evidence Vocabulary (CCCEV)
+- PROV-O
+- Existing certification, award and recognition vocabularies
+- Domain-specific recognition schemes where relevant
+
+**Assessment**
+
+Recognition should be distinguished from the criteria and evidence used
+to obtain it.
+
+Schema.org provides a generic `Certification` model for official
+statements about subjects including persons, organisations and places.
+It also provides properties for the issuing organisation, validity,
+expiration, status and certification identifier.
+
+This model is potentially applicable to recognition schemes in the
+astronomical ecosystem, particularly certifications awarded to places
+or organisations.
+
+CCCEV provides complementary semantics for the criteria, requirements
+and evidence involved in assessment processes but does not by itself
+represent the resulting recognition.
+
+Not every form of recognition should automatically be considered a
+certification. Labels, awards, designations, accreditations and other
+forms of recognition may have different semantics.
+
+No comprehensive controlled vocabulary has yet been identified for
+classifying these different recognition types.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should reuse existing generic recognition and certification models
+where their semantics match the relevant recognition scheme.
+
+Schema.org `Certification` should be evaluated as the preferred generic
+model for certification schemes, while CCCEV should be reused for
+criteria, requirements and evidence where applicable.
+
+OAKE should not introduce a taxonomy of recognition types at this stage.
+
+Additional controlled terminology should only be introduced or extended
+where existing shared vocabularies do not adequately represent the
+recognition types required by OAKE use cases.
+
+**Open issues**
+
+- Evaluate Schema.org `Certification` against representative dark-sky
+  recognition schemes.
+- Distinguish certification, label, award, designation and
+  accreditation.
+- Identify existing controlled vocabularies for recognition types.
+- Determine how recognition schemes themselves should be represented.
+- Define the relationship between a recognition and the CCCEV criteria
+  used for its assessment.
+- Represent issuing organisations and validity periods using existing
+  semantic resources.
