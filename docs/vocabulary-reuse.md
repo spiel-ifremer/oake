@@ -48,7 +48,7 @@ Vocabulary reuse decisions use the following categories:
 | Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
 | Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
 | Organisation types | W3C ORG, SKOS, external organisation classifications | ALIGN / OPEN |
-| Activity types | To be investigated | OPEN |
+| Activity types, techniques and purposes | SOSA/SSN, IVOA semantic resources, UAT, PPSR Core, CSO | ALIGN / OPEN |
 | Network types | To be investigated | OPEN |
 | Operational status | To be investigated | OPEN |
 | Contribution roles | To be investigated | OPEN |
@@ -369,3 +369,76 @@ more systematically.
 - Distinguish organisation type from role, activity and legal status.
 - Determine whether astronomy-specific organisation terminology is
   actually required.
+
+## Activity Types, Techniques and Purposes
+
+**Requirement**
+
+Provide shared terminology for describing activities across the
+astronomical ecosystem, including scientific observations, technical
+operations, data-related activities, education, outreach and
+participatory activities.
+
+**Candidate resources**
+
+- SOSA/SSN
+- IVOA semantic resources
+- Unified Astronomy Thesaurus (UAT)
+- PPSR Core
+- Citizen Science Ontology (CSO)
+- Other general-purpose activity vocabularies where relevant
+
+**Assessment**
+
+Activities in the astronomical ecosystem cannot be represented
+adequately through a single flat classification.
+
+Several distinct dimensions should be considered.
+
+SOSA/SSN already provides semantic classes for observational and
+instrument-related executions, including observations, sampling and
+deployments.
+
+Astronomical techniques such as imaging, photometry and spectroscopy
+represent a different classification dimension and should not
+automatically be modelled as fundamental subclasses of Activity.
+
+Similarly, purposes such as research, education and outreach should be
+distinguished from the nature of the activity itself.
+
+Data processing, calibration, maintenance and other technical
+activities introduce additional requirements that may be covered by
+existing scientific or general-purpose semantic resources.
+
+Citizen-science and participatory activities should reuse PPSR Core and
+related semantic resources where applicable.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should distinguish the semantic nature of an activity from its
+technique, purpose, scientific domain and participation model.
+
+Existing semantic classes such as those provided by SOSA/SSN should be
+reused where applicable.
+
+OAKE should not introduce a single monolithic taxonomy of astronomical
+activities.
+
+Controlled vocabularies for techniques, purposes and other activity
+dimensions should be identified and reused or aligned before
+OAKE-specific terminology is considered.
+
+**Open issues**
+
+- Identify controlled terminology for astronomical observing
+  techniques such as imaging, photometry and spectroscopy.
+- Identify terminology for education, outreach and training activities.
+- Evaluate terminology for calibration, maintenance and data-processing
+  activities.
+- Clarify the distinction between activity type, technique, purpose and
+  scientific domain.
+- Evaluate PPSR Core and CSO terminology for participatory activities.
+- Determine which activity dimensions should be represented through
+  controlled vocabularies.
