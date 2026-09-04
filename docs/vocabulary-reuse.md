@@ -50,7 +50,7 @@ Vocabulary reuse decisions use the following categories:
 | Organisation types | W3C ORG, SKOS, external organisation classifications | ALIGN / OPEN |
 | Activity types, techniques and purposes | SOSA/SSN, IVOA semantic resources, UAT, PPSR Core, CSO | ALIGN / OPEN |
 | Network types | W3C ORG, SOSA/SSN, PPSR Core, CSO | ALIGN / OPEN |
-| Operational status | To be investigated | OPEN |
+| Operational status | Existing lifecycle and status vocabularies to be investigated | EXTEND / OPEN |
 | Contribution roles | To be investigated | OPEN |
 | Recognition types | To be investigated | OPEN |
 
@@ -512,3 +512,67 @@ semantic structures, participation models and purposes.
 - Evaluate PPSR Core and CSO for participatory network structures.
 - Investigate astronomy-specific terminology only where existing
   generic resources prove insufficient.
+
+## Operational Status
+
+**Requirement**
+
+Provide shared controlled terminology for describing the operational
+and lifecycle status of instruments, observing facilities, stations,
+platforms and other astronomical resources.
+
+**Candidate resources**
+
+- Existing lifecycle and status vocabularies
+- IVOA semantic resources
+- SOSA/SSN
+- Domain-specific status vocabularies where relevant
+
+**Assessment**
+
+Operational status is relevant to several kinds of resources across the
+astronomical ecosystem, including instruments, observing facilities and
+distributed observing stations.
+
+No comprehensive astronomy-specific controlled vocabulary has currently
+been identified for representing the operational or lifecycle status of
+these resources.
+
+The requirement should be distinguished from the semantic modelling of
+the resource itself. SOSA/SSN provides generic models for systems and
+platforms, but does not by itself provide the controlled lifecycle
+terminology required by OAKE.
+
+Several dimensions may also need to be distinguished. Lifecycle status,
+operational status, availability and temporary conditions such as
+maintenance should not automatically be represented through a single
+flat status vocabulary.
+
+**OAKE decision**
+
+**EXTEND / OPEN**
+
+OAKE should investigate existing generic and domain-specific lifecycle
+and operational-status vocabularies before introducing new terminology.
+
+Where an existing vocabulary provides a suitable conceptual basis,
+preference should be given to extending or aligning that vocabulary
+rather than creating an OAKE-specific status vocabulary.
+
+OAKE should not introduce ontology classes corresponding to individual
+operational states.
+
+**Open issues**
+
+- Identify existing generic lifecycle and operational-status
+  vocabularies.
+- Determine whether lifecycle status, operational status and
+  availability require separate classification dimensions.
+- Evaluate terminology such as planned, commissioning, operational,
+  inactive, under maintenance and decommissioned.
+- Test the terminology against instruments, observing facilities and
+  distributed observing stations.
+- Investigate relevant terminology used by professional observatories,
+  citizen-science networks and amateur astronomical infrastructures.
+- Determine whether an extension of an existing shared vocabulary is
+  sufficient before considering OAKE-specific terminology.
