@@ -37,6 +37,8 @@ Vocabulary reuse decisions use the following categories:
 - **CREATE** — no suitable vocabulary has been identified and an
   OAKE-specific vocabulary may be required.
 - **OPEN** — further investigation is required before a decision can be made.
+- **MONITOR** — an existing resource is suitable for reuse but remains
+  under active development or has not yet reached stable normative status.
 
 
 ## Current vocabulary overview
@@ -111,7 +113,7 @@ terms with shared astronomy vocabularies.
 - Evaluate amateur and professional spectroscopic instrumentation.
 - Monitor emerging OntoPortal-Astro work on instrument-type semantics.
 
-## Observing Facility Types
+## Observing Facility and Station Types
 
 **Requirement**
 
@@ -189,6 +191,7 @@ driven and is currently an open vocabulary-reuse issue.
   IVOA resources and Wikidata.
 - Determine whether additional shared terminology is required for
   community-operated and citizen-operated observing facilities.
+
 ## Astronomical Object Types
 
 **Requirement**
