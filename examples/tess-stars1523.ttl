@@ -1,14 +1,23 @@
 # OAKE non-normative example: TESS-W photometer stars1523
 #
-# This example intentionally reuses external semantic resources only.
-# It does not introduce any OAKE-specific class or property.
+# This example reuses external semantic resources and includes one real
+# observation exported from the STARS4ALL/TESS Grafana data supplied for
+# stars1523.
 #
-# The example is deliberately minimal: it represents the individual
-# photometer and one deployment, without inventing observation values
-# or metadata that have not yet been verified.
+# The CSV does not state the timezone of the exported "Time" column.
+# The timestamp is therefore preserved exactly as exported, without
+# asserting a UTC offset.
+#
+# The same CSV row also contains:
+#   tamb = 15.33
+#   tsky = -1.35
+# These temperature values are intentionally not modelled yet, pending
+# selection of a precise semantic pattern distinguishing ambient and sky
+# temperature.
 
 @prefix ex:     <https://w3id.org/astrosemantics/oake/examples/tess/> .
 @prefix geo:    <http://www.opengis.net/ont/geosparql#> .
+@prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix saref:  <https://saref.etsi.org/core/> .
 @prefix s4envi: <https://saref.etsi.org/saref4envi/> .
@@ -43,3 +52,31 @@ ex:stars1523-deployment-2025
         a geo:Geometry ;
         geo:asWKT "POINT (-4.398 48.498)"^^geo:wktLiteral
     ] .
+
+
+# ---------------------------------------------------------------------------
+# Unit used by the TESS sky-brightness measurement
+# ---------------------------------------------------------------------------
+
+ex:MAG-PER-ARCSEC2
+    a qudt:Unit ;
+    rdfs:label "magnitude per square arcsecond"@en ;
+    qudt:symbol "mag/arcsec²" ;
+    qudt:expression "mag.arcsec**-2" .
+
+
+# ---------------------------------------------------------------------------
+# One real observation from the supplied stars1523 export
+# ---------------------------------------------------------------------------
+
+ex:obs-stars1523-20260913T000132
+    a sosa:Observation ;
+    rdfs:label "stars1523 sky-brightness observation at 2026-09-13T00:01:32"@en ;
+    sosa:madeBySensor ex:stars1523 ;
+    sosa:observedProperty s4envi:LightMagnitude ;
+    sosa:hasResult [
+        a qudt:QuantityValue ;
+        qudt:value 21.05 ;
+        qudt:hasUnit ex:MAG-PER-ARCSEC2
+    ] ;
+    sosa:resultTime "2026-09-13T00:01:32"^^xsd:dateTime .
