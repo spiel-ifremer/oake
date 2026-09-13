@@ -45,7 +45,8 @@ Vocabulary reuse decisions use the following categories:
 
 | Domain | Candidate resources | Decision |
 |---|---|---|
-| Instrument types | UAT, IVOA semantic resources, OBSI, SAREF extensions, emerging OntoPortal-Astro resources | EXTEND / OPEN |
+| Physical resource and equipment types | SAREF and extensions, SKOS, domain-specific classifications, CCO (monitor) | ALIGN / OPEN |
+| Instrument types | UAT, IVOA semantic resources, OBSI, SAREF and extensions, emerging OntoPortal-Astro resources | EXTEND / OPEN |
 | Observing facility and station types | OBSF, IVOA semantic resources, SOSA/SSN, Wikidata | ALIGN / OPEN |
 | Astronomical object types | IVOA Object Types, SIMBAD, UAT | REUSE / MONITOR |
 | Spectral domains / wavebands | IVOA Messenger vocabulary, UCD1+, PhotDM | REUSE |
@@ -55,6 +56,99 @@ Vocabulary reuse decisions use the following categories:
 | Operational status | Existing lifecycle and status vocabularies to be investigated | EXTEND / OPEN |
 | Contribution roles | PROV-O, CRediT, PPSR Core, CSO, IVOA semantic resources | ALIGN / OPEN |
 | Recognition types | Schema.org, CCCEV, PROV-O, external recognition and certification vocabularies | ALIGN / OPEN |
+
+
+## Physical Resource and Equipment Types
+
+**Requirement**
+
+Provide shared controlled terminology for classifying physical resources
+and equipment that are relevant to the astronomical ecosystem, including
+resources that are not necessarily observation instruments.
+
+Examples include mounts, tripods, optical components, filters, computers,
+projectors, educational models and other physical artefacts used in
+astronomical, technical, educational or outreach activities.
+
+**Candidate resources**
+
+- SAREF, in particular `saref:DeviceKind`
+- Relevant SAREF domain extensions
+- SKOS vocabularies and classification schemes
+- Existing domain-specific equipment classifications
+- Common Core Ontologies (CCO), as a semantic reference to monitor
+
+**Assessment**
+
+The classification of physical resources is broader than the
+classification of astronomical instruments.
+
+A physical resource should be distinguished from its type or kind, its
+commercial product model and manufacturer, and the functional role that
+it plays in a particular activity or configuration. These dimensions
+should not be conflated in controlled terminology.
+
+For example, an individual tripod may be classified using an equipment
+kind such as `Tripod`, while its manufacturer and product model describe
+different aspects of the same individual resource. Product models and
+manufacturers should therefore not be used as substitutes for equipment
+type classifications.
+
+SAREF provides a useful distinction between individual devices and
+`saref:DeviceKind`, while SAREF domain extensions may provide reusable
+domain-specific kinds. SKOS can support broader/narrower relationships
+and shared concept schemes where equipment classifications are expressed
+as controlled terminology.
+
+However, not every physical resource relevant to astronomy is
+necessarily a SAREF device or a SOSA/SSN system. Passive optical
+components, structural equipment, educational artefacts and other
+resources should not be forced into an observational-system model solely
+because they are used in an astronomical context.
+
+Schema.org product and manufacturer semantics are relevant to the
+description of commercial products, but these aspects belong primarily
+to semantic alignment rather than to equipment-type vocabulary design.
+
+The Common Core Ontologies provide potentially relevant semantics for
+artefacts and functions. Their applicability should be monitored, but
+they should not be treated as a normative OAKE dependency at this stage.
+
+No comprehensive shared vocabulary has yet been identified for the full
+range of physical resources and equipment encountered across
+professional, amateur, educational and citizen-science astronomy.
+
+**OAKE decision**
+
+**ALIGN / OPEN**
+
+OAKE should reuse existing equipment kinds and classifications wherever
+possible and align complementary terminology where necessary.
+
+OAKE should not introduce a general-purpose taxonomy of astronomical
+equipment at this stage.
+
+Where genuinely missing terminology is identified, preference should be
+given to extending or contributing to shared vocabularies rather than
+creating parallel professional, amateur or citizen-science equipment
+taxonomies.
+
+**Open issues**
+
+- Identify existing general and domain-specific vocabularies for
+  equipment and physical-resource types.
+- Determine when equipment types should be represented as
+  `saref:DeviceKind` and when SKOS concepts or other classification
+  mechanisms are more appropriate.
+- Evaluate terminology for mounts, tripods, optical components, filters,
+  computers, projectors and educational equipment.
+- Test candidate terminology against representative resources from the
+  Alnitak equipment inventory.
+- Distinguish consistently between resource type, individual identity,
+  product model, manufacturer, capability and contextual role.
+- Clarify the boundary between general equipment types and astronomical
+  instrument types.
+- Monitor the applicability and evolution of the Common Core Ontologies.
 
 
 ## Instrument Types
@@ -89,6 +183,11 @@ For example, SAREF4ENVI defines `s4envi:TESS` as a device kind for
 Telescope Encoder and Sky Sensor photometers and relates it to the
 broader `s4envi:Photometer` device kind. Such existing terminology
 should be reused rather than recreated within OAKE.
+
+Instrument types represent one part of the broader physical-resource and
+equipment classification problem. Resources such as mounts, tripods,
+mirrors, filters or other supporting equipment should not be forced into
+an instrument taxonomy when their semantic role is different.
 
 No single current resource has yet been identified as providing a
 comprehensive and coherent controlled vocabulary covering instrument
