@@ -22,6 +22,8 @@
 # beyond the terminology used by TESS/SAREF4ENVI.
 
 @prefix ex:     <https://w3id.org/astrosemantics/oake/examples/tess/> .
+@prefix place:  <https://w3id.org/astrosemantics/oake/examples/place/> .
+@prefix dcterms:<http://purl.org/dc/terms/> .
 @prefix geo:    <http://www.opengis.net/ont/geosparql#> .
 @prefix qk:     <http://qudt.org/vocab/quantitykind/> .
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
@@ -62,15 +64,21 @@ ex:stars1523
 # Deployment
 # ---------------------------------------------------------------------------
 
+place:kergreach-observing-place
+    a geo:Feature , dcterms:Location ;
+    rdfs:label "Kergreach observing place"@en ;
+    geo:hasGeometry place:kergreach-observing-place-geometry .
+
+place:kergreach-observing-place-geometry
+    a geo:Geometry ;
+    geo:asWKT "POINT (-4.398 48.498)"^^geo:wktLiteral .
+
 ex:stars1523-deployment-2025
     a sosa:Deployment ;
     rdfs:label "Deployment of stars1523 at Kergreach"@en ;
     sosa:deployedSystem ex:stars1523 ;
     sosa:startTime "2025-12-01"^^xsd:date ;
-    geo:hasGeometry [
-        a geo:Geometry ;
-        geo:asWKT "POINT (-4.398 48.498)"^^geo:wktLiteral
-    ] .
+    dcterms:spatial place:kergreach-observing-place .
 
 
 # ---------------------------------------------------------------------------
