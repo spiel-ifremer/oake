@@ -1,0 +1,45 @@
+# OAKE non-normative example: TESS-W photometer stars1523
+#
+# This example intentionally reuses external semantic resources only.
+# It does not introduce any OAKE-specific class or property.
+#
+# The example is deliberately minimal: it represents the individual
+# photometer and one deployment, without inventing observation values
+# or metadata that have not yet been verified.
+
+@prefix ex:     <https://w3id.org/astrosemantics/oake/examples/tess/> .
+@prefix geo:    <http://www.opengis.net/ont/geosparql#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix saref:  <https://saref.etsi.org/core/> .
+@prefix s4envi: <https://saref.etsi.org/saref4envi/> .
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+
+# ---------------------------------------------------------------------------
+# Individual device
+# ---------------------------------------------------------------------------
+
+ex:stars1523
+    a saref:Sensor , sosa:Sensor ;
+    rdfs:label "TESS-W stars1523"@en ;
+    saref:hasIdentifier "stars1523" ;
+    saref:hasDeviceKind s4envi:TESS ;
+    saref:hasModel "TESS-W" ;
+    saref:observes s4envi:LightMagnitude ;
+    sosa:hasDeployment ex:stars1523-deployment-2025 .
+
+
+# ---------------------------------------------------------------------------
+# Deployment
+# ---------------------------------------------------------------------------
+
+ex:stars1523-deployment-2025
+    a sosa:Deployment ;
+    rdfs:label "Deployment of stars1523 at Kergreach"@en ;
+    sosa:deployedSystem ex:stars1523 ;
+    sosa:startTime "2025-12-01"^^xsd:date ;
+    geo:hasGeometry [
+        a geo:Geometry ;
+        geo:asWKT "POINT (-4.398 48.498)"^^geo:wktLiteral
+    ] .
