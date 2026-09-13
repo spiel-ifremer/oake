@@ -139,43 +139,52 @@ The modelling should preserve the distinction between:
 
 ```text
 individual device      stars1523
-device kind            TESS-W / TESS
-broader device kind    Photometer
-product model          TESS-W
+device kind            s4envi:TESS
+broader device kind    s4envi:Photometer
+product/model label    "TESS-W"
 manufacturer           to be verified
-identifier             stars1523
+identifier             "stars1523"
 ```
 
-The exact relationship between `TESS-W`, the more general TESS device
-kind, and the product model must be checked carefully before RDF
-publication.
+SAREF4ENVI already defines `s4envi:TESS` as a `saref:DeviceKind` and
+relates it through `skos:broader` to `s4envi:Photometer`. No separate
+OAKE term is therefore required for the generic TESS kind.
 
-In particular, product model and device kind should not be conflated
-simply because the same label may be used in technical documentation.
+For the first OAKE demonstrator, `TESS-W` should be treated
+conservatively as product/model information rather than introducing a new
+semantic kind. SAREF provides `saref:hasModel` for this purpose.
+
+If later work shows that TESS-W, TESS-P, TASS and TESS-4C need to be
+queried systematically as reusable device kinds, that classification
+should be added through an appropriate shared vocabulary or SAREF-aligned
+extension rather than introduced ad hoc in the instance graph.
 
 
 ## SAREF and SAREF4ENVI
 
-SAREF is a strong candidate for representing the distinction between an
-individual device and its device kind.
+SAREF provides a direct pattern for representing the distinction between
+an individual device and its device kind.
 
-SAREF4ENVI already provides astronomy-relevant terminology for TESS
-photometers and should therefore be reused rather than recreated in OAKE.
+SAREF4ENVI already defines `s4envi:TESS` as a `saref:DeviceKind` and
+relates it through `skos:broader` to `s4envi:Photometer`. These existing
+terms should therefore be reused directly.
 
-The intended reuse pattern is conceptually:
+A first instance pattern can be expressed conceptually as:
 
-```text
-stars1523
-    └── device kind → TESS
-                        └── broader kind → Photometer
+```turtle
+ex:stars1523
+    a saref:Sensor ;
+    saref:hasIdentifier "stars1523" ;
+    saref:hasDeviceKind s4envi:TESS ;
+    saref:hasModel "TESS-W" .
 ```
 
-A future RDF implementation should use the exact current SAREF and
-SAREF4ENVI terms and properties after verification against the published
-versions selected by OAKE.
+The manufacturer should not be asserted until it has been verified from
+an authoritative source. SAREF provides `saref:hasManufacturer`, but its
+value is a literal rather than an organisation resource.
 
-OAKE should not create its own `TESS`, `TESSW` or `Photometer` concept
-where an existing semantic resource provides the required meaning.
+This pattern deliberately avoids creating OAKE-specific `TESS`,
+`TESSW` or `Photometer` terms.
 
 
 ## SOSA/SSN observational role
@@ -183,10 +192,17 @@ where an existing semantic resource provides the required meaning.
 The physical identity of `stars1523` and its role in an observational
 process should be treated as complementary dimensions.
 
+For this case, `saref:Sensor` is an appropriate SAREF class because the
+device is designed to observe and measure properties. The official
+SOSA/SSN 2023 SAREF alignment states that `saref:Sensor` is narrower
+than `sosa:Sensor`, and that `saref:Device` is narrower than
+`sosa:System`. This provides a standards-based bridge between the device
+description and the observational model.
+
 When `stars1523` performs observations, SOSA/SSN provides the generic
 semantic framework for describing:
 
-- the observing system or sensor;
+- the observing sensor/system;
 - observation executions;
 - observed properties;
 - features of interest where relevant;
@@ -226,17 +242,21 @@ This is important because the same device may be:
 - operated under different configurations;
 - or associated with different networks over time.
 
-A deployment can therefore connect:
+SOSA/SSN provides a direct deployment pattern:
 
 ```text
 Deployment
-├── deployed system → stars1523
-├── location → Kergreach deployment place
-├── start → 2025-12-01
-└── end → open / not specified
+├── sosa:deployedSystem → stars1523
+├── geographic location → Kergreach deployment place
+├── sosa:startTime → 2025-12-01
+└── sosa:endTime → open / not specified
 ```
 
 The deployment date used in this case study is **2025-12-01**.
+
+For a simple start date, `sosa:startTime` is sufficient. OWL-Time becomes
+useful when richer interval semantics, temporal relations or reusable
+time entities are needed.
 
 The knowledge graph should not encode the current location as an eternal
 intrinsic property of the device when the actual fact being represented
@@ -285,7 +305,12 @@ without requiring OAKE-specific geographical classes.
 
 ## Temporal dimension
 
-OWL-Time should provide the generic temporal model.
+Temporal modelling should use the simplest suitable existing mechanism.
+
+SOSA/SSN already provides temporal properties such as `sosa:startTime`,
+`sosa:endTime`, `sosa:phenomenonTime` and `sosa:resultTime` for
+deployments and executions. OWL-Time should complement these properties
+when richer interval semantics or temporal relationships are required.
 
 Time is relevant not only to individual observations, but also to:
 
@@ -342,18 +367,21 @@ A simplified observation pattern is:
 
 ```text
 Observation
-├── made by → stars1523
-├── observed property → night-sky brightness
+├── sosa:madeBySensor → stars1523
+├── sosa:observedProperty → night-sky brightness
 ├── result → measured value
-├── result time → timestamp
+├── sosa:resultTime → timestamp
 └── deployment / location context → current deployment
 ```
 
-The exact representation of results should follow the current SOSA/SSN
-recommendations rather than rely on deprecated terms.
+Current SOSA/SSN deprecates the `sosa:Result` class, but not the result
+relations themselves. A literal result may use `sosa:hasSimpleResult`;
+a structured result may use `sosa:hasResult` with an appropriate
+information object.
 
-The case study should therefore verify the current SOSA/SSN result
-pattern before RDF examples are committed.
+For measurements where the unit must be explicit, the first RDF example
+should use a structured value pattern rather than silently assuming a
+unit from context.
 
 
 ## Network participation
@@ -444,11 +472,11 @@ should not be elevated into the core OAKE conceptual model.
 
 | Real-world element | Preliminary semantic approach | Status |
 |---|---|---|
-| `stars1523` individual device | SAREF device semantics + SOSA/SSN observational role | ALIGN |
-| TESS device kind | SAREF4ENVI | REUSE |
-| Photometer kind | SAREF4ENVI | REUSE |
-| TESS-W product/model distinction | SAREF + Schema.org, to be verified | OPEN |
-| Device identifier | existing identifier properties, to be selected | OPEN |
+| `stars1523` individual device | `saref:Sensor`, aligned with `sosa:Sensor` | REUSE / ALIGN |
+| TESS device kind | `s4envi:TESS` | REUSE |
+| Photometer kind | `s4envi:Photometer` | REUSE |
+| TESS-W product/model information | `saref:hasModel` for first demonstrator | REUSE / OPEN |
+| Device identifier | `saref:hasIdentifier` | REUSE |
 | Deployment | SOSA/SSN | REUSE |
 | Deployment place | GeoSPARQL | REUSE |
 | Deployment time | OWL-Time | REUSE |
@@ -471,8 +499,8 @@ can answer the relevant competency questions.
 
 Potential gaps to investigate include:
 
-1. the distinction between TESS as a device kind and TESS-W as a product
-   model or more specific device kind;
+1. whether TESS-W should remain product/model information or eventually
+   become a reusable device kind alongside TESS-P, TASS and TESS-4C;
 2. a stable representation of participation in the worldwide TESS
    network;
 3. operational and lifecycle status terminology;
