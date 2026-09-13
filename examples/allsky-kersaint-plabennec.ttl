@@ -1,0 +1,110 @@
+# OAKE non-normative example: AllSky installation at Kergreach
+#
+# This example uses external semantic resources only.
+#
+# It distinguishes:
+# - the persistent identity of the AllSky observing system;
+# - its first time-bounded technical configuration;
+# - physical and software components;
+# - deployment at the same Kergreach place used by stars1523;
+# - and the public web page from the physical observing system.
+#
+# The field of view is intentionally not asserted because it has not yet
+# been characterised precisely.
+
+@prefix ex:      <https://w3id.org/astrosemantics/oake/examples/allsky/> .
+@prefix place:   <https://w3id.org/astrosemantics/oake/examples/place/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix saref:   <https://saref.etsi.org/core/> .
+@prefix s4syst:  <https://saref.etsi.org/saref4syst/> .
+@prefix schema:  <https://schema.org/> .
+@prefix sosa:    <http://www.w3.org/ns/sosa/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+
+# ---------------------------------------------------------------------------
+# Shared observing place
+# ---------------------------------------------------------------------------
+
+place:kergreach-observing-place
+    a geo:Feature , dcterms:Location ;
+    rdfs:label "Kergreach observing place"@en ;
+    geo:hasGeometry place:kergreach-observing-place-geometry .
+
+place:kergreach-observing-place-geometry
+    a geo:Geometry ;
+    geo:asWKT "POINT (-4.398 48.498)"^^geo:wktLiteral .
+
+
+# ---------------------------------------------------------------------------
+# Persistent observing-system identity
+# ---------------------------------------------------------------------------
+
+ex:allsky-kersaint-plabennec
+    a sosa:Sensor , s4syst:System , prov:Entity ;
+    rdfs:label "AllSky observing system at Kergreach"@en ;
+    sosa:hasDeployment ex:allsky-deployment-2026 .
+
+
+# ---------------------------------------------------------------------------
+# Current technical configuration
+# ---------------------------------------------------------------------------
+
+ex:allsky-config-2026-09-05
+    a sosa:Sensor , s4syst:System , prov:Entity ;
+    rdfs:label "AllSky configuration from 2026-09-05"@en ;
+    prov:specializationOf ex:allsky-kersaint-plabennec ;
+    prov:generatedAtTime "2026-09-05"^^xsd:date ;
+    s4syst:hasSubSystem ex:zwo-asi678mc , ex:raspberry-pi-5 ;
+    dcterms:hasPart ex:fisheye-lens-2-5mm , ex:allsky-software .
+
+
+# ---------------------------------------------------------------------------
+# Physical and software components
+# ---------------------------------------------------------------------------
+
+ex:zwo-asi678mc
+    a saref:Sensor , sosa:Sensor , s4syst:System , prov:Entity ;
+    rdfs:label "ZWO ASI678MC camera"@en ;
+    saref:hasManufacturer "ZWO" ;
+    saref:hasModel "ASI678MC" .
+
+ex:fisheye-lens-2-5mm
+    a prov:Entity ;
+    rdfs:label "2.5 mm fisheye lens"@en .
+
+ex:raspberry-pi-5
+    a saref:Device , s4syst:System , prov:Entity ;
+    rdfs:label "Raspberry Pi 5 Model B, 16 GB"@en ;
+    saref:hasModel "Raspberry Pi 5 Model B" .
+
+ex:allsky-software
+    a schema:SoftwareApplication , prov:Entity ;
+    schema:name "Allsky" ;
+    rdfs:label "Allsky software"@en .
+
+
+# ---------------------------------------------------------------------------
+# Deployment
+# ---------------------------------------------------------------------------
+
+ex:allsky-deployment-2026
+    a sosa:Deployment ;
+    rdfs:label "Deployment of the AllSky system at Kergreach"@en ;
+    sosa:deployedSystem ex:allsky-kersaint-plabennec ;
+    sosa:startTime "2026-09-05"^^xsd:date ;
+    dcterms:spatial place:kergreach-observing-place .
+
+
+# ---------------------------------------------------------------------------
+# Public web access
+# ---------------------------------------------------------------------------
+
+ex:allsky-public-page
+    a schema:WebPage ;
+    schema:name "Kersaint-Plabennec AllSky" ;
+    schema:url <https://allsky.tail01e8e7.ts.net/allsky/> ;
+    schema:about ex:allsky-kersaint-plabennec .
