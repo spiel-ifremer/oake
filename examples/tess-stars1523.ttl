@@ -1,28 +1,47 @@
 # OAKE non-normative example: TESS-W photometer stars1523
 #
-# This example reuses external semantic resources and includes one real
-# observation exported from the STARS4ALL/TESS Grafana data supplied for
-# stars1523.
+# This example reuses external semantic resources and includes three
+# values from one real row exported from the STARS4ALL/TESS data for
+# stars1523:
 #
-# The CSV does not state the timezone of the exported "Time" column.
-# The timestamp is therefore preserved exactly as exported, without
-# asserting a UTC offset.
-#
-# The same CSV row also contains:
+#   Time = 2026-09-13 00:01:32
+#   mag  = 21.05
 #   tamb = 15.33
 #   tsky = -1.35
-# These temperature values are intentionally not modelled yet, pending
-# selection of a precise semantic pattern distinguishing ambient and sky
-# temperature.
+#
+# The source CSV does not state the timezone of the exported Time column.
+# The timestamp is therefore preserved without asserting a UTC offset.
+#
+# "Ambient temperature" and "sky temperature" are represented as
+# feature-specific properties of interest, both linked to the reusable
+# QUDT Temperature quantity kind. This follows the SAREF/SOSA pattern for
+# distinguishing a general property kind from a property bound to one
+# feature of interest.
+#
+# The physical interpretation of "tsky" is deliberately not refined
+# beyond the terminology used by TESS/SAREF4ENVI.
 
 @prefix ex:     <https://w3id.org/astrosemantics/oake/examples/tess/> .
 @prefix geo:    <http://www.opengis.net/ont/geosparql#> .
+@prefix qk:     <http://qudt.org/vocab/quantitykind/> .
 @prefix qudt:   <http://qudt.org/schema/qudt/> .
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix saref:  <https://saref.etsi.org/core/> .
 @prefix s4envi: <https://saref.etsi.org/saref4envi/> .
 @prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix unit:   <http://qudt.org/vocab/unit/> .
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+
+# ---------------------------------------------------------------------------
+# Reused property kind
+# ---------------------------------------------------------------------------
+
+# Current SOSA/SSN documentation explicitly illustrates this pattern:
+# a QUDT quantity kind may be used as a SAREF generic property kind.
+
+qk:Temperature
+    a saref:Property .
 
 
 # ---------------------------------------------------------------------------
@@ -35,7 +54,7 @@ ex:stars1523
     saref:hasIdentifier "stars1523" ;
     saref:hasDeviceKind s4envi:TESS ;
     saref:hasModel "TESS-W" ;
-    saref:observes s4envi:LightMagnitude ;
+    saref:observes s4envi:LightMagnitude , qk:Temperature ;
     sosa:hasDeployment ex:stars1523-deployment-2025 .
 
 
@@ -55,6 +74,33 @@ ex:stars1523-deployment-2025
 
 
 # ---------------------------------------------------------------------------
+# Features of interest used for the temperature measurements
+# ---------------------------------------------------------------------------
+
+ex:ambient-air-at-kergreach
+    a saref:FeatureOfInterest , sosa:FeatureOfInterest ;
+    rdfs:label "Ambient air at the stars1523 deployment"@en ;
+    saref:hasPropertyOfInterest ex:ambient-air-at-kergreach-temperature .
+
+ex:ambient-air-at-kergreach-temperature
+    a saref:PropertyOfInterest ;
+    rdfs:label "Ambient temperature at the stars1523 deployment"@en ;
+    saref:hasPropertyKind qk:Temperature ;
+    saref:isPropertyOfInterestOf ex:ambient-air-at-kergreach .
+
+ex:sky-at-kergreach
+    a saref:FeatureOfInterest , sosa:FeatureOfInterest ;
+    rdfs:label "Sky at the stars1523 deployment"@en ;
+    saref:hasPropertyOfInterest ex:sky-at-kergreach-temperature .
+
+ex:sky-at-kergreach-temperature
+    a saref:PropertyOfInterest ;
+    rdfs:label "Sky temperature reported by stars1523"@en ;
+    saref:hasPropertyKind qk:Temperature ;
+    saref:isPropertyOfInterestOf ex:sky-at-kergreach .
+
+
+# ---------------------------------------------------------------------------
 # Unit used by the TESS sky-brightness measurement
 # ---------------------------------------------------------------------------
 
@@ -66,17 +112,43 @@ ex:MAG-PER-ARCSEC2
 
 
 # ---------------------------------------------------------------------------
-# One real observation from the supplied stars1523 export
+# Real observations from the same supplied CSV row
 # ---------------------------------------------------------------------------
 
-ex:obs-stars1523-20260913T000132
+ex:obs-stars1523-20260913T000132-mag
     a sosa:Observation ;
-    rdfs:label "stars1523 sky-brightness observation at 2026-09-13T00:01:32"@en ;
+    rdfs:label "stars1523 sky-brightness observation at 2026-09-13 00:01:32"@en ;
     sosa:madeBySensor ex:stars1523 ;
     sosa:observedProperty s4envi:LightMagnitude ;
     sosa:hasResult [
         a qudt:QuantityValue ;
         qudt:value 21.05 ;
         qudt:hasUnit ex:MAG-PER-ARCSEC2
+    ] ;
+    sosa:resultTime "2026-09-13T00:01:32"^^xsd:dateTime .
+
+ex:obs-stars1523-20260913T000132-tamb
+    a sosa:Observation ;
+    rdfs:label "stars1523 ambient-temperature observation at 2026-09-13 00:01:32"@en ;
+    sosa:madeBySensor ex:stars1523 ;
+    sosa:hasFeatureOfInterest ex:ambient-air-at-kergreach ;
+    sosa:observedProperty ex:ambient-air-at-kergreach-temperature ;
+    sosa:hasResult [
+        a qudt:QuantityValue ;
+        qudt:value 15.33 ;
+        qudt:hasUnit unit:DEG_C
+    ] ;
+    sosa:resultTime "2026-09-13T00:01:32"^^xsd:dateTime .
+
+ex:obs-stars1523-20260913T000132-tsky
+    a sosa:Observation ;
+    rdfs:label "stars1523 sky-temperature observation at 2026-09-13 00:01:32"@en ;
+    sosa:madeBySensor ex:stars1523 ;
+    sosa:hasFeatureOfInterest ex:sky-at-kergreach ;
+    sosa:observedProperty ex:sky-at-kergreach-temperature ;
+    sosa:hasResult [
+        a qudt:QuantityValue ;
+        qudt:value -1.35 ;
+        qudt:hasUnit unit:DEG_C
     ] ;
     sosa:resultTime "2026-09-13T00:01:32"^^xsd:dateTime .
