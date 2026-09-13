@@ -2,10 +2,20 @@
 #
 # This example uses external semantic resources only.
 #
-# It distinguishes:
+# Identity rule:
+# - ex:allsky-kersaint-plabennec is the stable knowledge-graph identity
+#   of the observing system used in this OAKE example.
+# - external technical identifiers such as an Allsky Map `machine_id`
+#   are intentionally NOT asserted here until their exact scope has been
+#   verified.
+# - a camera serial number, Raspberry Pi identifier, software-installation
+#   identifier or Allsky Map registration identifier must not be treated
+#   automatically as the identifier of the persistent observing system.
+#
+# The example distinguishes:
 # - the persistent identity of the AllSky observing system;
-# - its first time-bounded technical configuration;
-# - physical and software components;
+# - its first known technical configuration;
+# - the physical and software components of that configuration;
 # - deployment at the same Kergreach place used by stars1523;
 # - and the public web page from the physical observing system.
 #
@@ -48,18 +58,29 @@ ex:allsky-kersaint-plabennec
     rdfs:label "AllSky observing system at Kergreach"@en ;
     sosa:hasDeployment ex:allsky-deployment-2026 .
 
+# No machine_id is asserted here. If an Allsky Map identifier is later
+# verified to identify an external registration or software installation
+# rather than the persistent observing system itself, that registration
+# should be represented as a separate resource carrying its own identifier.
+
 
 # ---------------------------------------------------------------------------
-# Current technical configuration
+# First known technical configuration
 # ---------------------------------------------------------------------------
 
 ex:allsky-config-2026-09-05
     a sosa:Sensor , s4syst:System , prov:Entity ;
     rdfs:label "AllSky configuration from 2026-09-05"@en ;
     prov:specializationOf ex:allsky-kersaint-plabennec ;
-    prov:generatedAtTime "2026-09-05"^^xsd:date ;
+    dcterms:date "2026-09-05"^^xsd:date ;
     s4syst:hasSubSystem ex:zwo-asi678mc , ex:raspberry-pi-5 ;
     dcterms:hasPart ex:fisheye-lens-2-5mm , ex:allsky-software .
+
+# When the lens is replaced, this configuration should remain in the graph.
+# A new configuration entity should be created and linked to the same
+# persistent observing-system identity with prov:specializationOf.
+# If the exact change timestamp is known, PROV generation/invalidation
+# times may then be added using xsd:dateTime values.
 
 
 # ---------------------------------------------------------------------------
