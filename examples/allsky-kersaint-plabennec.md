@@ -115,6 +115,7 @@ AllSky observing system
 | Computing device | SAREF | represent the Raspberry Pi as a device |
 | Software | PROV-O, schema/software vocabularies to investigate | represent acquisition and publication software |
 | System composition | SAREF / SAREF4SYST / SOSA/SSN | represent components and functional subsystems |
+| Temporal configuration | PROV-O, complemented by SAREF/SAREF4SYST and OWL-Time where needed | represent successive time-bounded configurations without changing system identity |
 | Deployment | SOSA/SSN | represent the installation at the observing place |
 | Place / geometry | GeoSPARQL | reuse the Kergreach place resource |
 | Time | SOSA/SSN, OWL-Time | represent operational and deployment periods |
@@ -357,9 +358,67 @@ AllSky observing system
 ```
 
 The exact semantic resource to use for representing temporally valid
-technical configurations remains an open alignment question. Existing
-configuration, system-composition and provenance models should be
-investigated before introducing any OAKE-specific configuration class.
+technical configurations has been investigated against SAREF/SAREF4SYST,
+SOSA/SSN and PROV-O.
+
+SAREF and SAREF4SYST provide useful semantics for the composition and
+topology of the system, but they do not by themselves provide a generic
+pattern for identifying successive time-bounded configurations of the
+same evolving system.
+
+SOSA/SSN `Deployment` should remain reserved for the arrangement of
+systems and platforms for observational use. A component replacement
+does not automatically imply a new deployment when the observing system
+remains deployed at the same place.
+
+PROV-O provides a suitable generic pattern for representing successive
+time-bounded views of the same evolving thing. In particular,
+`prov:specializationOf` can relate a configuration-specific entity to the
+persistent system identity. PROV explicitly supports using multiple
+entities with fixed attributes to describe a thing whose relevant
+attributes change over time.
+
+The preferred working pattern for this case study is therefore:
+
+```text
+persistent AllSky system
+│
+├── deployment
+│   └── Kergreach, since 2026-09-05
+│
+└── temporal specializations
+    ├── configuration 1
+    │   ├── prov:specializationOf → persistent AllSky system
+    │   ├── lens → current 2.5 mm fisheye lens
+    │   ├── prov:generatedAtTime → 2026-09-05
+    │   └── prov:invalidatedAtTime → replacement date
+    │
+    └── configuration 2
+        ├── prov:specializationOf → persistent AllSky system
+        ├── lens → future replacement lens
+        └── prov:generatedAtTime → replacement date
+```
+
+Successive configurations may additionally be related using
+`prov:wasRevisionOf` when the later configuration is understood as a
+revision of the earlier one.
+
+If the replacement operation itself needs to be described, it can be
+represented as a `prov:Activity` that uses relevant existing components
+and generates the new configuration-specific entity.
+
+This pattern avoids introducing an OAKE-specific `Configuration` class
+while preserving the distinction between:
+
+- persistent system identity;
+- deployment;
+- composition;
+- configuration valid during a particular period;
+- and the activity that caused a configuration change.
+
+OWL-Time may complement PROV-O when richer interval relationships are
+required, but is not necessary merely to state the generation and
+invalidation times of a configuration-specific entity.
 
 
 ## Field of view
@@ -492,6 +551,7 @@ heterogeneous resources deployed at the same real-world observing place.
 | Raspberry Pi 5 | SAREF device semantics | ALIGN |
 | Allsky software | software vocabulary to investigate | OPEN |
 | Part-whole relationships | SAREF / SAREF4SYST / SOSA/SSN | ALIGN / OPEN |
+| Successive technical configurations | PROV-O `specializationOf`, generation/invalidation; composition via SAREF/SAREF4SYST | ALIGN |
 | AllSky deployment | SOSA/SSN | REUSE |
 | Kergreach observing place | shared GeoSPARQL place with stars1523 | REUSE |
 | Deployment start date | SOSA/SSN temporal property | REUSE |
@@ -522,9 +582,10 @@ Potential gaps to investigate include:
    resource;
 7. representation of a continuously updated public AllSky endpoint;
 8. operational status and configuration changes over time;
-9. representation and temporal validity of successive system
+9. validate the PROV-O specialization pattern for successive system
    configurations when components such as lenses, cameras or computing
-   equipment are replaced.
+   equipment are replaced, including whether `prov:wasRevisionOf` and a
+   reconfiguration activity are needed in representative cases.
 
 
 ## Expected next step
@@ -541,8 +602,9 @@ The first RDF example should then remain deliberately small and should:
 - leave the field of view unspecified until characterised;
 - distinguish the public web endpoint from the physical system;
 - preserve the distinction between deployment and technical
-  configuration so that future component replacements can be represented
-  without rewriting the deployment history;
+  configuration by testing PROV-O specializations for time-bounded
+  configurations, so that future component replacements can be
+  represented without rewriting the deployment history;
 - and avoid introducing OAKE-specific classes unless a documented
   semantic gap remains.
 
