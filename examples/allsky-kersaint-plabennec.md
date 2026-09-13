@@ -124,6 +124,7 @@ AllSky observing system
 | Image product | PROV-O, DCAT and media/data vocabularies | represent generated images and collections |
 | Public access | DCAT and web-service vocabularies | represent access to published products |
 | Provenance | PROV-O | connect system, activity, software and generated products |
+| External identifiers | Domain-specific identifier properties; Schema.org `identifier` / `PropertyValue` where generic structured identifiers are needed | distinguish knowledge-graph identity from source-specific identifiers |
 
 
 ## Complete AllSky system
@@ -230,6 +231,83 @@ Potential semantic requirements include:
 
 The most appropriate reusable software vocabulary should be investigated
 before introducing any OAKE-specific software class or property.
+
+
+## Identifiers and resource identity
+
+The identity of the AllSky observing system in the OAKE knowledge graph
+should be distinguished from identifiers assigned by external technical
+systems.
+
+The stable OAKE example URI:
+
+```text
+https://w3id.org/astrosemantics/oake/examples/allsky/allsky-kersaint-plabennec
+```
+
+identifies the persistent observing system used in this case study. Its
+identity should not depend on the current Raspberry Pi, the Allsky
+software installation, the camera serial number or an identifier assigned
+by the Allsky Map infrastructure.
+
+Several identifiers may coexist, each with a different scope:
+
+```text
+persistent OAKE URI
+    → identity of the observing system in the knowledge graph
+
+Allsky Map machine_id
+    → technical identifier associated with the Allsky Map publication /
+      software installation context
+
+camera serial number
+    → manufacturer identifier of the individual ASI678MC camera
+
+computer identifiers
+    → identifiers of the Raspberry Pi or operating-system installation
+```
+
+These identifiers should not be treated as interchangeable.
+
+A change of Raspberry Pi or a reinstallation of the Allsky software may
+change a technical installation identifier without necessarily changing
+the identity of the astronomical observing system represented by OAKE.
+
+Conversely, replacing the physical camera may change the identifier of
+the sensor while the persistent identity of the complete AllSky station
+may remain unchanged.
+
+For generic external identifiers, Schema.org provides
+`schema:identifier`, whose value may be a `schema:PropertyValue`. This
+allows the identifier scheme or source to be stated separately from the
+identifier value.
+
+A conceptual pattern is:
+
+```turtle
+ex:some-resource
+    schema:identifier [
+        a schema:PropertyValue ;
+        schema:propertyID "identifier scheme or source" ;
+        schema:value "identifier value"
+    ] .
+```
+
+Where a domain-specific vocabulary already provides an appropriate
+identifier property, that property should be preferred. For example,
+SAREF provides `saref:hasIdentifier` for devices.
+
+An external identifier should only be attached directly to the OAKE
+resource when it genuinely identifies the same real-world entity. If an
+identifier instead identifies a software installation, registration,
+catalogue record or publication entry, that intermediate resource should
+be represented separately and carry its own identifier.
+
+The Allsky Map `machine_id` should therefore remain optional in this case
+study until its exact scope for the local installation has been verified.
+
+This distinction is intended to remain generalisable to other OAKE use
+cases, including TESS, FRIPON, OBSI, OBSF and external catalogues.
 
 
 ## System composition
@@ -560,6 +638,7 @@ heterogeneous resources deployed at the same real-world observing place.
 | Image data product | PROV-O / DCAT / media vocabularies | ALIGN / OPEN |
 | Public web endpoint | DCAT / service description | ALIGN / OPEN |
 | Provenance | PROV-O | REUSE |
+| External / technical identifiers | Domain-specific properties or Schema.org structured identifiers | ALIGN / OPEN |
 
 
 ## Semantic gaps to test
@@ -586,6 +665,10 @@ Potential gaps to investigate include:
    configurations when components such as lenses, cameras or computing
    equipment are replaced, including whether `prov:wasRevisionOf` and a
    reconfiguration activity are needed in representative cases.
+10. verify the scope and persistence of external technical identifiers,
+    including the Allsky Map `machine_id`, and determine whether each
+    identifier belongs to the observing system, a physical component or
+    an external registration/software installation.
 
 
 ## Expected next step
@@ -601,6 +684,7 @@ The first RDF example should then remain deliberately small and should:
 - include only verified physical components;
 - leave the field of view unspecified until characterised;
 - distinguish the public web endpoint from the physical system;
+- keep the stable knowledge-graph identity separate from optional external technical identifiers;
 - preserve the distinction between deployment and technical
   configuration by testing PROV-O specializations for time-bounded
   configurations, so that future component replacements can be
