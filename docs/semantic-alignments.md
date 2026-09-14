@@ -58,6 +58,7 @@ Semantic alignment decisions use the following categories:
 | Instrument | SOSA/SSN, SAREF and extensions, IVOA OBSI | ALIGN |
 | Observing Facility | SOSA/SSN, IVOA OBSF | ALIGN |
 | Target | SOSA/SSN, astronomy-specific semantic resources | ALIGN |
+| Observation / Acquisition Configuration | SOSA/SSN, IVOA Provenance DM, IVOA ObsCore, FITS/WCS, PROV-O | ALIGN |
 | Network | W3C ORG, SOSA/SSN, PPSR Core, CSO, PROV-O | ALIGN |
 | Citizen Science / Public Participation | PPSR Core, CSO, SOSA/SSN, PROV-O | ALIGN |
 | Recognition | Schema.org, CCCEV, PROV-O, W3C ORG, OWL-Time | ALIGN / OPEN |
@@ -165,9 +166,6 @@ at this stage.
 - Identify controlled vocabularies suitable for general astronomical
   equipment and resource types.
 - Monitor the evolution and applicability of the Common Core Ontologies.
-
-
-## Instrument
 
 
 ## Instrument
@@ -336,6 +334,104 @@ No OAKE-specific `Target` class is introduced at this stage.
 - Determine appropriate mappings between astronomical target concepts
   and `sosa:FeatureOfInterest`.
 - Investigate relevant IVOA and other astronomy community vocabularies.
+
+
+## Observation and Acquisition Configuration
+
+**Requirement**
+
+Represent astronomical observations and acquisitions together with the
+configuration parameters and characterisation metadata required to
+interpret their results.
+
+This includes, for example:
+
+- exposure time;
+- detector or camera gain;
+- acquisition settings;
+- image dimensions;
+- field of view and spatial coverage;
+- spatial resolution;
+- image orientation and projection;
+- and provenance relationships between an acquisition and the digital
+  product it generates.
+
+**Candidate semantic resources**
+
+- SOSA/SSN
+- IVOA Provenance Data Model
+- IVOA Observation Data Model Core Components (ObsCore)
+- FITS / World Coordinate System (WCS)
+- PROV-O
+- QUDT where quantitative values and units are required
+
+**Assessment**
+
+SOSA/SSN provides the generic semantic model for observations and other
+executions. It can relate an observation to the sensor or system that
+performed it, the feature of interest, the observed property, the result
+and relevant temporal information.
+
+However, acquisition settings such as exposure time and detector gain
+should not automatically be introduced as OAKE-specific observation
+properties.
+
+The IVOA Provenance Data Model provides a complementary astronomy-specific
+model for the configuration of activities. Its activity-configuration
+and parameter concepts are suitable candidates for representing values
+used to configure an acquisition or processing activity.
+
+IVOA ObsCore provides established astronomy data-model concepts for
+describing observation and data-product characterisation, including
+exposure time, spatial coverage, field of view, spatial resolution and
+data dimensions.
+
+FITS/WCS provides the established astronomical framework for describing
+the relationship between image pixels and celestial coordinates,
+including projection, scale, rotation and orientation.
+
+PROV-O can represent the generation of digital products by observation,
+acquisition or processing activities and can connect successive
+processing stages.
+
+QUDT can complement these resources when parameter values or results
+require explicit quantities and units.
+
+These resources describe different dimensions of the same acquisition
+and should therefore be aligned rather than replaced by a parallel OAKE
+observation-configuration model.
+
+**OAKE decision**
+
+**ALIGN**
+
+OAKE should use SOSA/SSN as the generic semantic model for observations
+and executions, while reusing astronomy-specific IVOA standards for
+acquisition configuration and data-product characterisation.
+
+OAKE should not introduce properties such as `oake:exposureTime`,
+`oake:gain`, `oake:fieldOfView` or `oake:imageOrientation` where
+established astronomy standards already provide suitable semantics.
+
+Image products should remain distinguishable from the observations or
+acquisition activities that generate them.
+
+**Open issues**
+
+- Determine the RDF integration pattern between SOSA/SSN observations
+  and IVOA Provenance Data Model activity-configuration parameters.
+- Determine how exposure time, gain and other acquisition parameters
+  should be represented in RDF without duplicating IVOA semantics.
+- Determine how IVOA ObsCore metadata should complement RDF descriptions
+  of observations and image products.
+- Determine how FITS/WCS metadata should be linked to RDF resources
+  without attempting to reproduce the complete WCS model in OAKE.
+- Clarify the boundary between an observation result and a separately
+  identified digital image or dataset resource.
+- Evaluate QUDT usage for quantitative acquisition parameters and
+  measurement results.
+- Test the alignment against the AllSky Kersaint-Plabennec case study
+  and other image-producing astronomical systems.
 
 
 ## Network
@@ -578,6 +674,9 @@ For example, a distributed citizen-science observing network may involve:
 - organisations described using W3C ORG;
 - participants and projects described using PPSR Core / CSO;
 - instruments, deployments and observations described using SOSA/SSN;
+- acquisition configuration described using the IVOA Provenance Data Model;
+- observation and image-product characterisation described using IVOA
+  ObsCore and FITS/WCS where applicable;
 - astronomical terminology and identifiers provided by IVOA semantic
   resources and controlled vocabularies;
 - places described using GeoSPARQL;
@@ -601,13 +700,17 @@ Current priorities are:
 
 1. Define mappings between SOSA/SSN, SAREF and astronomy-specific
    resources for instruments and observing facilities.
-2. Investigate PPSR Core / CSO ↔ SOSA/SSN mappings for participatory
+2. Determine the integration pattern between SOSA/SSN and the IVOA
+   Provenance Data Model for acquisition-configuration parameters.
+3. Determine how IVOA ObsCore and FITS/WCS should complement RDF
+   descriptions of astronomical observations and image products.
+4. Investigate PPSR Core / CSO ↔ SOSA/SSN mappings for participatory
    astronomical observations.
-3. Clarify relationships between organisations, facilities, instruments,
+5. Clarify relationships between organisations, facilities, instruments,
    platforms, deployments and networks.
-4. Evaluate representative professional, amateur and citizen-science
+6. Evaluate representative professional, amateur and citizen-science
    use cases against the proposed alignments.
-5. Evaluate Schema.org `Certification` and CCCEV against representative
+7. Evaluate Schema.org `Certification` and CCCEV against representative
    recognition schemes.
-6. Identify semantic gaps that remain after reuse and alignment of
+8. Identify semantic gaps that remain after reuse and alignment of
    existing resources.
