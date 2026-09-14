@@ -27,11 +27,13 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo:     <http://www.opengis.net/ont/geosparql#> .
 @prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix qudt:    <http://qudt.org/schema/qudt/> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix saref:   <https://saref.etsi.org/core/> .
 @prefix s4syst:  <https://saref.etsi.org/saref4syst/> .
 @prefix schema:  <https://schema.org/> .
 @prefix sosa:    <http://www.w3.org/ns/sosa/> .
+@prefix unit:    <http://qudt.org/vocab/unit/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 
@@ -54,7 +56,7 @@ place:kergreach-observing-place-geometry
 # ---------------------------------------------------------------------------
 
 ex:allsky-kersaint-plabennec
-    a sosa:Sensor , s4syst:System , prov:Entity ;
+    a sosa:System , s4syst:System , prov:Entity ;
     rdfs:label "AllSky observing system at Kergreach"@en ;
     sosa:hasDeployment ex:allsky-deployment-2026 .
 
@@ -69,7 +71,7 @@ ex:allsky-kersaint-plabennec
 # ---------------------------------------------------------------------------
 
 ex:allsky-config-2026-09-05
-    a sosa:Sensor , s4syst:System , prov:Entity ;
+    a sosa:System , s4syst:System , prov:Entity ;
     rdfs:label "AllSky configuration from 2026-09-05"@en ;
     prov:specializationOf ex:allsky-kersaint-plabennec ;
     dcterms:date "2026-09-05"^^xsd:date ;
@@ -139,26 +141,98 @@ ex:allsky-public-page
 #   exposure  = 768 us (0.768 ms)
 #   gain      = 0
 #
-# Exposure and gain are intentionally preserved here as source metadata
-# comments until a suitable reusable imaging/acquisition vocabulary has
-# been selected. No OAKE-specific properties are introduced for them.
+# IVOA Provenance DM 1.0 explicitly allows activity configuration to be
+# represented using entities connected to the activity through Used
+# relations with a setup/configuration role. This RDF example follows
+# that generic PROV-O-compatible pattern rather than inventing
+# OAKE-specific exposure or gain properties.
+#
+# The specialised IVOA ActivityConfiguration package is a VO-DML model.
+# It is therefore used here as a conceptual alignment rather than by
+# minting unverified RDF properties in an IVOA namespace.
+#
+# The exposure value also corresponds conceptually to ObsCore t_exptime.
+# No ObsCore RDF property is asserted here because this example has not
+# adopted a canonical RDF serialization of ObsCore.
+#
+# FITS/WCS metadata are not asserted because the current example does not
+# yet contain verified WCS information for this image.
 
 ex:sky-observed-from-kergreach
     a sosa:FeatureOfInterest ;
     rdfs:label "Sky observed from Kergreach"@en .
 
+
+# ---------------------------------------------------------------------------
+# Acquisition configuration values
+# ---------------------------------------------------------------------------
+
+ex:setup-configuration-role
+    a prov:Role ;
+    rdfs:label "Acquisition setup parameter"@en .
+
+ex:observing-configuration-role
+    a prov:Role ;
+    rdfs:label "Observing-system configuration"@en .
+
+ex:exposure-setting-20260914T065056Z
+    a prov:Entity , qudt:QuantityValue ;
+    rdfs:label "Exposure time setting for the 2026-09-14 06:50:56 UTC acquisition"@en ;
+    qudt:numericValue "0.000768"^^xsd:decimal ;
+    qudt:unit unit:SEC .
+
+ex:gain-setting-20260914T065056Z
+    a prov:Entity ;
+    rdfs:label "Camera gain setting for the 2026-09-14 06:50:56 UTC acquisition"@en ;
+    prov:value "0"^^xsd:integer .
+
+
+# ---------------------------------------------------------------------------
+# Observation / acquisition activity
+# ---------------------------------------------------------------------------
+
 ex:allsky-observation-20260914T065056Z
     a sosa:Observation , prov:Activity ;
     rdfs:label "AllSky image acquisition at 2026-09-14 06:50:56 UTC"@en ;
-    rdfs:comment "Allsky displayed exposure: 768 µs (0.768 ms); gain: 0."@en ;
-    sosa:madeBySensor ex:allsky-config-2026-09-05 ;
+
+    # SOSA identifies the actual observational sensor: the ASI678MC camera.
+    sosa:madeBySensor ex:zwo-asi678mc ;
     sosa:hasFeatureOfInterest ex:sky-observed-from-kergreach ;
     sosa:hasResult ex:allsky-image-20260914T065056Z ;
-    sosa:resultTime "2026-09-14T06:50:56Z"^^xsd:dateTime .
+    sosa:resultTime "2026-09-14T06:50:56Z"^^xsd:dateTime ;
+
+    # PROV-O connects the acquisition to the complete technical
+    # configuration and to the concrete parameter values used.
+    prov:used
+        ex:allsky-config-2026-09-05 ,
+        ex:exposure-setting-20260914T065056Z ,
+        ex:gain-setting-20260914T065056Z ;
+
+    prov:qualifiedUsage [
+        a prov:Usage ;
+        prov:entity ex:allsky-config-2026-09-05 ;
+        prov:hadRole ex:observing-configuration-role
+    ] ;
+
+    prov:qualifiedUsage [
+        a prov:Usage ;
+        prov:entity ex:exposure-setting-20260914T065056Z ;
+        prov:hadRole ex:setup-configuration-role
+    ] ;
+
+    prov:qualifiedUsage [
+        a prov:Usage ;
+        prov:entity ex:gain-setting-20260914T065056Z ;
+        prov:hadRole ex:setup-configuration-role
+    ] .
+
+
+# ---------------------------------------------------------------------------
+# Generated image resource
+# ---------------------------------------------------------------------------
 
 ex:allsky-image-20260914T065056Z
     a schema:ImageObject , prov:Entity ;
     rdfs:label "AllSky image acquired at 2026-09-14 06:50:56 UTC"@en ;
     dcterms:created "2026-09-14T06:50:56Z"^^xsd:dateTime ;
     prov:wasGeneratedBy ex:allsky-observation-20260914T065056Z .
-
