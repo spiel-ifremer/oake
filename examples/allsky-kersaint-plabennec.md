@@ -121,6 +121,8 @@ AllSky observing system
 | Time | SOSA/SSN, OWL-Time | represent operational and deployment periods |
 | Field of view | astronomy-specific / imaging vocabularies to investigate | represent measured angular coverage |
 | Image acquisition | SOSA/SSN | represent observation/acquisition activity |
+| Acquisition parameters | IVOA Provenance Data Model, SOSA/SSN | represent exposure time, gain and other parameters used during an acquisition |
+| Image characterisation | IVOA ObsCore, FITS/WCS | represent exposure metadata, image dimensions, spatial coverage, field of view, resolution and orientation |
 | Image product | PROV-O, DCAT and media/data vocabularies | represent generated images and collections |
 | Public access | DCAT and web-service vocabularies | represent access to published products |
 | Provenance | PROV-O | connect system, activity, software and generated products |
@@ -533,28 +535,51 @@ introduce an OAKE-specific field-of-view property prematurely.
 The principal observational product of the AllSky installation is a sky
 image.
 
-A first semantic pattern should distinguish:
+The first RDF implementation distinguishes:
 
 ```text
-sensor/system
+sensor / observing configuration
     ↓ performs
 observation / acquisition
     ↓ generates
 image result / digital resource
 ```
 
-The observation may include:
+A real acquisition has now been used to test this pattern:
 
-- acquisition time;
-- exposure duration;
-- sensor configuration;
-- observed portion of the sky;
-- generated image;
-- processing provenance.
+```text
+time      → 2026-09-14 06:50:56 UTC
+exposure  → 768 µs (0.768 ms)
+gain      → 0
+result    → AllSky image
+```
 
-The exact boundary between a SOSA observation result and a separately
-described digital image resource should be tested against real Allsky
-output before a Turtle example is finalised.
+SOSA/SSN provides the generic observation model and links the acquisition
+to the sensor, feature of interest, result and observation time.
+
+The resulting image should remain a distinct digital resource. PROV-O can
+represent its generation by the acquisition activity, while image- and
+dataset-oriented standards can provide additional metadata.
+
+Acquisition settings such as exposure time and gain should not be
+introduced as OAKE-specific properties.
+
+The IVOA Provenance Data Model provides a suitable conceptual model for
+representing parameters associated with an activity configuration.
+SOSA/SSN may provide complementary execution-input semantics where
+appropriate.
+
+Image-level characterisation should reuse astronomy standards wherever
+possible. In particular:
+
+- IVOA ObsCore can provide concepts for exposure time, spatial coverage,
+  field of view, spatial resolution and image dimensions;
+- FITS/WCS provides the established astronomical framework for describing
+  pixel-to-sky geometry, projection, orientation, scale and rotation.
+
+The RDF integration pattern between these resources and SOSA/SSN remains
+to be tested before acquisition parameters are represented as structured
+RDF in the example.
 
 
 ## Public image access
@@ -669,29 +694,45 @@ Potential gaps to investigate include:
     including the Allsky Map `machine_id`, and determine whether each
     identifier belongs to the observing system, a physical component or
     an external registration/software installation.
+11. determine the RDF integration pattern between SOSA/SSN observations
+    and IVOA Provenance Data Model activity-configuration parameters for
+    acquisition settings such as exposure time and gain;
+12. determine how IVOA ObsCore and FITS/WCS metadata should complement
+    the RDF description of AllSky image products without duplicating
+    established astronomy data models.
 
 
 ## Expected next step
 
-Before creating an RDF/Turtle example, the conceptual mapping should be
-reviewed against the actual installed configuration.
+A first RDF/Turtle implementation now exists for this case study and has
+been extended with one real AllSky image acquisition.
 
-The first RDF example should then remain deliberately small and should:
+The current example already tests:
 
-- reuse the same Kergreach place resource as the `stars1523` example;
-- distinguish the complete AllSky system from the ASI678MC camera;
-- represent the deployment start date as 2026-09-05;
-- include only verified physical components;
-- leave the field of view unspecified until characterised;
-- distinguish the public web endpoint from the physical system;
-- keep the stable knowledge-graph identity separate from optional external technical identifiers;
-- preserve the distinction between deployment and technical
-  configuration by testing PROV-O specializations for time-bounded
-  configurations, so that future component replacements can be
-  represented without rewriting the deployment history;
-- and avoid introducing OAKE-specific classes unless a documented
-  semantic gap remains.
+- a persistent AllSky system identity;
+- a time-bounded technical configuration;
+- the ZWO ASI678MC camera;
+- the 2.5 mm fisheye lens;
+- the Raspberry Pi;
+- the Allsky software;
+- deployment at the shared Kergreach observing place;
+- a real image acquisition;
+- the generated image as a distinct digital resource;
+- and public web access.
 
-A later iteration can add one real image acquisition and its resulting
-image resource, in the same way that the `stars1523` demonstrator was
-progressively extended with real observations.
+The next iteration should focus on acquisition and image
+characterisation metadata.
+
+Priority should be given to:
+
+- testing the integration of SOSA/SSN with the IVOA Provenance Data Model
+  for acquisition parameters such as exposure time and gain;
+- evaluating IVOA ObsCore for image and observation characterisation;
+- evaluating FITS/WCS for spatial coverage, orientation and projection;
+- characterising the actual field of view of the current camera/lens
+  configuration;
+- and continuing to avoid OAKE-specific terms where existing astronomy
+  standards provide suitable semantics.
+
+A future change of lens will provide an additional real-world test of the
+temporal-configuration pattern based on PROV-O specializations.
