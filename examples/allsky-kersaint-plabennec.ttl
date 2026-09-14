@@ -129,3 +129,36 @@ ex:allsky-public-page
     schema:name "Kersaint-Plabennec AllSky" ;
     schema:url <https://allsky.tail01e8e7.ts.net/allsky/> ;
     schema:about ex:allsky-kersaint-plabennec .
+
+# ---------------------------------------------------------------------------
+# One real AllSky acquisition
+# ---------------------------------------------------------------------------
+
+# Acquisition metadata visible on the public Allsky page:
+#   timestamp = 2026-09-14 06:50:56 UTC
+#   exposure  = 768 us (0.768 ms)
+#   gain      = 0
+#
+# Exposure and gain are intentionally preserved here as source metadata
+# comments until a suitable reusable imaging/acquisition vocabulary has
+# been selected. No OAKE-specific properties are introduced for them.
+
+ex:sky-observed-from-kergreach
+    a sosa:FeatureOfInterest ;
+    rdfs:label "Sky observed from Kergreach"@en .
+
+ex:allsky-observation-20260914T065056Z
+    a sosa:Observation , prov:Activity ;
+    rdfs:label "AllSky image acquisition at 2026-09-14 06:50:56 UTC"@en ;
+    rdfs:comment "Allsky displayed exposure: 768 µs (0.768 ms); gain: 0."@en ;
+    sosa:madeBySensor ex:allsky-config-2026-09-05 ;
+    sosa:hasFeatureOfInterest ex:sky-observed-from-kergreach ;
+    sosa:hasResult ex:allsky-image-20260914T065056Z ;
+    sosa:resultTime "2026-09-14T06:50:56Z"^^xsd:dateTime .
+
+ex:allsky-image-20260914T065056Z
+    a schema:ImageObject , prov:Entity ;
+    rdfs:label "AllSky image acquired at 2026-09-14 06:50:56 UTC"@en ;
+    dcterms:created "2026-09-14T06:50:56Z"^^xsd:dateTime ;
+    prov:wasGeneratedBy ex:allsky-observation-20260914T065056Z .
+
